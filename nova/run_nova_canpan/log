@@ -1,0 +1,30 @@
+  This is MPPNP: multi-zone post-processing network.
+  (c) 2008 Marco Pignatari, Falk Herwig,
+      Michael Bennett, Raphael Hirschi and the
+      NuGrid collaboration.
+
+ Input files read ...
+ vital: false species=L   1
+ vital: false species=G   1
+ vital: false species=LI  6
+ vital: false species=BE  9
+ vital: false species=B  10
+ nvar rnetw2007         156
+ time for setting reactions false   1.4940000000001064E-003 seconds
+ There are         1999  models to be processed. Now building pp-grid ...
+ finished IABUNI
+ Broadcasting data to slaves...
+ Broadcasting integers ...
+ Broadcasting sp reals...
+ Broadcasting dp reals...
+ Broadcasting characters...
+ Broadcasting logicals...
+ cycle, time step /yrs:            1   19082.815194092924     
+PRE-DIFFUSION:   0.60180D+12  0.78330D-03 143
+POST-DIFFUSION:   0.60180D+12  0.92228D-03 433
+ cycle, time step /yrs:         1001   2.8886374431683683E-006
+PRE-DIFFUSION:   0.91096D+02  0.78108D-031957
+POST-DIFFUSION:   0.91096D+02  0.78108D-031957
+ Post-processing complete.
+ Total program time is:   3847.9936709999997      seconds
+ Number of timesteps calculated:        2000

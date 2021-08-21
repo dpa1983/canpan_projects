@@ -1,0 +1,22 @@
+The "H5_out_ne_MWD_TWD_dM/dt_#_mixed" directories contain MPPNP-processed hdf files for ONe nova models.
+Main model parameters are indicated in the directory name,
+where MWD and TWD are the initial WD mass and central temperature, dM/dt is the letter-encoded mass accretion
+rate (X corresponds to dM/dt = 2e-10 Msun/yr, while B to 1e-11 Msun/yr), # is the number of models in the evolutionary sequence,
+and "mixed" means that the WD was accreting a mixture of equal amounts (50%) of WD and solar-composition materials.
+
+These directories also contain the file with the accreted composition, ne_wd_MWD_mixed.ppn, and the file with
+the solar composition, Solar_Composition.
+
+In the MPPNP post-processing computations, a list of 147 isotopes, falk_isotopedatabase.txt, has been used.
+It is placed in the directory ppd.
+
+A table below gives the maximum mass interval over which the abundances can be averaged in the envelope, and
+the range of model numbers that were processed.
+
+   ne nova model             Mmin      Mmax      #min  #max
+
+   ne_1.15_12_X_2000_mixed   1.150000  1.500040  1    1900
+
+   ne_1.15_20_X_500_mixed    1.150000  1.500029  5     400
+
+   ne_1.3_20_X_500_mixed     1.300000  1.300010  1     400

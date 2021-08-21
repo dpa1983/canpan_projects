@@ -1,0 +1,229 @@
+#
+# the script asks to specify parameters for NuGrid post-processing
+# nucleosynthesis computations for co or ne nova models and starts them
+#
+
+die () {
+    echo ""
+    echo >&2 "$@"
+    echo ""
+    exit 1
+}
+
+clear
+
+echo ""
+if [ $# -eq 0 -o $# -eq 1 -o $# -eq 2 -o $# -eq 3 ]
+then
+   echo "You must, at least, specify WD's type (co or ne) and mass, as well as" 
+   echo "the initial and final model numbers (e.g., co 1.15 20 1000)!"
+   die "Ending..."
+elif [ $3 -ge $4 ]
+then
+   die "The final model number must exceed the initial one! Ending..."
+else
+   echo "You have chosen to post-process the $2 Msun $1 nova models from $3 to $4."
+   echo ""
+   echo "Are you sure that these models have already been prepared with MESA? (yes/no)"
+   read answer
+   while [ $answer != "yes" -a $answer != "no" ]
+   do
+      echo "I don't understand your answer. Please, answer yes or no."
+      read answer
+   done
+   if [ $answer = "no" ]
+   then
+      die "Please, specify the initial and final model numbers again. Ending..."
+   else
+      wdtype=$1
+      wdmass=$2
+      mintface=$2
+      if [ $2 = "1.15" -a $1 = "co" ]
+      then
+         mintface="-1.150005"
+      fi
+      if [ $1 = "ne" ]
+      then
+         mintface=-${wdmass}
+      fi
+      mod1=$3
+      mod2=$4
+   fi
+   if [ $# -eq 4 ]
+   then
+      echo "NuGrid will use the default number (147) of isotopes from the enlarged network."
+      niso="147"
+   elif [ $5 -gt 147 ]
+   then
+      die "The number of isotopes from the enlarged network cannot exceed 147. Ending..."
+   else
+      echo "$5 isotopes will be added from the enlarged network."
+      niso=$3
+   fi
+fi
+
+echo ""
+echo "Would you like NuGrid to take into account convective boundary mixing? (yes/no)"
+read answer
+while [ $answer != "yes" -a $answer != "no" ]
+do
+   echo "I don't understand your answer. Please, answer yes or no."
+   read answer
+done
+if [ $answer = "no" ]
+then
+   echo ""
+   echo "Would you like NuGrid to use a mixture of equal amounts of the $1 WD"
+   echo "and solar-composition materials in the accreted envelope? (yes/no)"
+   read answer
+   while [ $answer != "yes" -a $answer != "no" ]
+   do
+      echo "I don't understand your answer. Please, answer yes or no."
+      read answer
+   done
+   if [ $answer = "no" ]
+   then
+      mixture="solar"
+      runvar="10"
+      echo "NuGrid will assume that the accreted envelope has the solar composition."
+   else
+      mixture="mixed"
+      runvar="10"
+      echo "NuGrid will use a mixture of equal amounts of the $1 WD"
+      echo "and solar-composition materials in the accreted envelope."
+   fi
+else
+   runvar="20"
+      echo "NuGrid will take into account convective boundary mixing."
+fi
+
+echo ""
+echo "Would you like NuGrid to give you the opportunity to change reaction rates?  (yes/no)"
+read answer
+while [ $answer != "yes" -a $answer != "no" ]
+do
+   echo "I don't understand your answer. Please, answer yes or no."
+   read answer
+done
+if [ $answer = "no" ]
+then
+   change="0"
+   echo "NuGrid will use the default reaction rates."
+else
+   change="1"
+   echo "NuGrid will give you the opportunity to change reaction rates."
+fi
+
+echo ""
+echo "Would you like NuGrid to start computations with these parameters? (yes/no)"
+read answer
+while [ $answer != "yes" -a $answer != "no" ]
+do
+   echo "I don't understand your answer. Please, answer yes or no."
+   read answer
+done
+if [ $answer = "no" ]
+then
+   die "Please, specify the input parameters again. Ending..."
+else
+   echo ""
+   echo "NuGrid is starting computations..."
+   echo ""
+fi
+
+#
+# cleaning
+#
+ 
+cd $HOME/nova_framework/${wdtype}_nova/${wdtype}_nova_hdf 
+ls -1 ${wdtype}_nova_hdf.*.se.h5 > ${wdtype}_nova_hdf.idx
+cd $HOME/nova_framework/RUN_MPPNP
+echo ""
+echo "Cleaning out old output files..."
+rm -f err.log out summaryinfo.dat
+if [ -d H5_out ]
+then
+   rm -f H5_out/*.out.h5
+else
+   mkdir H5_out
+fi
+cp Solar_Composition H5_out
+cp last_restart.out.template last_restart.out
+
+if [ $runvar  = "10" ]
+then
+   comp=$mixture
+   if [ $mixture = "mixed" ]
+   then
+      name=${wdtype}_"wd"_${wdmass}_${mixture}".ppn"
+      cd $HOME/nova_framework/USEEPP     
+      cp $name mixed.ppn
+      cd $HOME/nova_framework/RUN_MPPNP
+   fi
+elif [ $runvar="20" ]
+then
+   comp="solar"
+   name=${wdtype}_"wd"_${wdmass}".ppn"
+   cd $HOME/nova_framework/USEEPP     
+   cp $name wd_abund.ppn
+   cd $HOME/nova_framework/RUN_MPPNP
+else
+   die "Parameter runvar (iabuini) is neither 10 nor 20..."
+fi
+
+#echo $mixture
+#echo $comp
+#echo $name
+#echo $mod1
+#echo $mod2
+#echo $change
+#echo $niso
+#exit 0
+
+rm -f ppn_frame.input ppn_physics.input
+sed s/runvar/$runvar/ ${wdtype}_ppn_frame.input.template > ppn_frame.input.1
+sed s/comp/$comp/ ppn_frame.input.1 > ppn_frame.input.2
+sed s/mod1/$mod1/ ppn_frame.input.2 > ppn_frame.input.3
+sed s/mod2/$mod2/ ppn_frame.input.3 > ppn_frame.input.4
+sed s/mintface/$mintface/ ppn_frame.input.4 > ppn_frame.input.5
+sed s:home:$HOME: ppn_frame.input.5 > ppn_frame.input
+sed s/change/$change/ ppn_physics.input.template > ppn_physics.input.1
+sed s/niso/$niso/ ppn_physics.input.1 > ppn_physics.input
+rm -f ppn_frame.input.1 ppn_frame.input.2 ppn_frame.input.3 ppn_frame.input.4 ppn_frame.input.5 ppn_physics.input.1
+
+#exit 0
+
+if [ $change = "1" ]
+then
+   echo "Wait a few minutes until a list of isotopes and reaction rates is compiled..."
+   ./run_and_wait.nova 
+   echo ""
+   echo "What text editor would you like to use to change reaction rates? (vi/emacs)"
+   read answer
+   while [ $answer != "vi" -a $answer != "emacs" ]
+   do
+      echo "Please, answer vi or emacs."
+      read answer
+   done
+if [ $answer = "vi" ]
+then
+   vi networksetup.txt
+else
+   emacs networksetup.txt
+fi
+   change="3"
+   sed s/change/$change/ ppn_physics.input.template > ppn_physics.input.1
+   sed s/niso/$niso/ ppn_physics.input.1 > ppn_physics.input
+   rm -f ppn_physics.input.1
+   ./run.nova 
+   clear
+   cd $HOME/nova_framework/${wdtype}_nova
+   echo "NuGrid has started the computations." 
+   echo "Use the command top to see if it is running (a bunch of mppnp.exe processes)."
+else
+   ./run.nova
+   clear
+   cd $HOME/nova_framework/${wdtype}_nova
+   echo "NuGrid has started the computations." 
+   echo "Use the command top to see if it is running (a bunch of mppnp.exe processes)."
+fi

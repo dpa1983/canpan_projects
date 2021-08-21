@@ -1,0 +1,6 @@
+
+MESA_DIR = ../../../..
+
+STAR = star_wd2
+
+include $(MESA_DIR)/star/work_standard_makefile

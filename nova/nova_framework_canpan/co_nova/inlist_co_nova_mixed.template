@@ -1,0 +1,199 @@
+
+! inlist_co_nova
+
+&star_job
+
+      show_log_description_at_start = .false.
+      show_net_reactions_info = .true.
+      
+      load_saved_model = .true.
+      saved_model_name = '../co_wd_models/co_wd_mwd_twd_mixed.mod' 
+
+      steps_to_take_before_terminate = nmod
+
+   ! nuclear reactions
+
+      change_net = .true.
+      new_net_name = 'nova_ext.net'
+
+      change_v_flag = .true.
+      new_v_flag = .true.
+
+      set_initial_age = .true.
+      initial_age = 0 ! in years
+
+      set_tau_factor = .true.
+      set_to_this_tau_factor =  1 ! 25
+
+      pgstar_flag = .false. ! .true.
+
+      use_se_output = .true. ! se is based on hdf5.  ask Falk about it.
+
+      set_rates_preference = .true. ! .false. ! for use by net + rates modules
+      new_rates_preference = 2 ! 1
+         ! 1 = NACRE rates -- this is the default
+         ! 2 = jina reaclib rates
+
+      kappa_CO_prefix = 'gn93_co' ! for C/O enhanced (Type 2 OPAL opacities) -- only have gn93
+
+/ ! end of star_job namelist
+
+
+&controls
+
+      logQ_limit = 100
+      gamma_center_limit = 10000 ! FOR THIS TEST
+            
+      star_mass_max_limit = 1.5d0
+   	
+      mass_change = mymdot ! rate of accretion (Msun/year)
+
+    ! max_timestep = 3.1556d10 ! in seconds.  max_timestep <= 0 means no upper limit.
+      
+      min_center_cell_dq = 1d-7
+      max_center_cell_dq = 1d-6
+      max_surface_cell_dq = 1d-12 ! 1d-8
+
+      photostep = 100
+
+      max_num_profile_models = 500  ! < 0 means no limit
+           ! maximum number of saved profiles
+
+      max_num_profile_models = 1000  ! < 0 means no limit
+         ! maximum number of saved profiles
+         ! if there's no limit on the number of profiles saved,
+         ! you can fill up your disk -- I've done it.
+         ! so it's a good idea to set this limit to a reasonable number such as 20 or 30.
+         ! once that many have been saved during a run, old ones will be discarded
+         ! to make room for new ones.
+         ! profiles that were saved for key events are given priority
+         ! and aren't removed as long as there
+         ! is a lower priority profile that can be discarded instead.
+
+      profile_interval = 20 ! 100
+      history_interval = 1 
+      terminal_cnt = 1
+      write_header_frequency = 10
+
+           !these params provide the option to turn off mass change when have small timesteps.
+           !mass change doesn't do much in such cases except make convergence harder.
+           !mass_change_full_on_dt = 1d4 ! (seconds)
+      mass_change_full_on_dt = 1d0 ! (seconds)
+           !mass_change_full_off_dt = 1d3 ! (seconds)
+      mass_change_full_off_dt = 1d-1 ! (seconds)
+           !between these limits, mass change is gradually reduced
+
+      min_timestep_limit = 1d-12
+                  
+      RGB_wind_scheme = ''
+      AGB_wind_scheme = ''
+
+      xa_function_species(1) = 'h1'  ! name of nuclide as defined in chem_def
+		xa_function_weight(1) = 20
+		xa_function_param(1) = 1d-6
+      xa_function_species(2) = 'he4'  ! name of nuclide as defined in chem_def
+		xa_function_weight(2) = 20
+		xa_function_param(2) = 1d-2
+
+
+      delta_lgL_H_limit = 0.05 ! limit for magnitude of change in lgL_H
+      delta_lgL_H_hard_limit = 0.5
+      lgL_H_burn_min = 1.5 ! ignore changes in lgL_H if value is less than this
+
+      delta_lgL_He_limit = 0.025 ! limit for magnitude of change in lgL_He
+      delta_lgL_He_hard_limit = 1
+      lgL_He_burn_min = 2.5 ! ignore changes in lgL_He if value is less than this
+      
+      delta_lgRho_limit = 1 ! limit for magnitude of max change in log10 density at any point
+      delta_lgRho_hard_limit = -1
+
+      ! limit for magnitude of change in log10(L/Lsun)
+      delta_lgL_limit = 0.05 ! 0.01 ! 0.05
+      delta_lgL_hard_limit = 0.15 ! 0.03 ! 0.15
+
+      varcontrol_target = 1d-3
+
+          ! NOTE: for super eddington wind,
+          ! we use Ledd averaged by mass to optical depth tau = surf_avg_tau
+      super_eddington_wind_eta = 0
+      surf_avg_tau = 1 ! 25 ! 100 ! use mass avg down to this optical depth
+          ! parameter for mass loss driven by super Eddington luminosity
+      super_eddington_wind_Ledd_factor = 1
+          ! divide L by this factor when computing super Eddington wind
+          ! e.g., if this is 2, then only get wind when L/2 > Ledd      
+
+      net_logTcut_lo = 5.3d0
+      net_logTcut_lim = 5.4d0
+
+    ! opacities
+      use_Type2_opacities = .true. ! .false.
+      Zbase = 0.02
+
+      accrete_same_as_surface = .false.
+      accrete_given_mass_fractions = .true.
+
+      read_extra_controls_inlist2 = .true.
+      extra_controls_inlist2_name = 'co_nova_mwd_mixed_comp'
+ 
+      which_atm_option =  'grey_and_kap'
+
+      use_artificial_viscosity = .false.
+      l1_coef = 0.1 ! increase to as much as 1d3 to suppress pulsations
+            !l1_coef = 1000 ! increase to as much as 1d3 to suppress pulsations
+      
+      ! limit for magnitude of max change in log10 temperature at any point 
+
+           delta_lgT_limit = 0.25 ! 0.05  
+           delta_lgT_hard_limit = 1
+
+      ! limit for magnitude of max change in log10 temperature at photosphere   
+
+           !delta_lgTeff_limit = 0.01  
+           !delta_lgTeff_hard_limit = 0.03
+         
+      ! change controls during mass ejection by super Eddington wind
+
+      !delta_lgT_limit = 0.5
+      !delta_lgT_hard_limit = 1
+
+      delta_lgTeff_limit = 0.10 
+      delta_lgTeff_hard_limit = 0.30
+
+      mesh_delta_coeff = 1.0 ! 2.0
+
+      ! apply smoothing to abundances in newly nonconvective regions
+      smooth_convective_bdy = .false. ! .true.
+      max_delta_limit_for_smooth = 0.1
+      ! don't smooth across a region where any mass fraction changes by more than this limit
+
+      remove_mixing_glitches = .false. ! .true. ! if true, then okay to remove gaps and singletons
+      okay_to_remove_mixing_singleton = .false. ! .true.
+
+      min_convective_gap = 0.1
+      ! close gap between convective regions if smaller than this (< 0 means skip this)
+      ! gap measured radially in units of pressure scale height
+
+! Resolution Stuff!!!
+      ! mass fraction gradients
+
+      ! xa_function = xa_function_weight*log10(xa + xa_function_param),
+      ! up to num_xa_function of these (see star_def for value of num_xa_function).
+
+      xa_function_species(1) = 'c12'  ! name of nuclide as defined in chem_def
+                xa_function_weight(1) = 20
+                xa_function_param(1) = 1d-4
+
+      ! temperature gradient
+      ! T_function1 = T_function1_weight*log10(T)
+                T_function1_weight = 110
+      ! T_function2 = T_function2_weight*log10(T / (T + T_function2_param))
+                T_function2_weight = 80
+                T_function2_param = 2d8 ! 7d8
+      ! largest change in T_function2 happens around this temperature
+      ! default value puts this in the envelope ionization region.
+
+      ! NOTE: the T gradient mesh control seems to be necessary to allow burning that starts off center
+      ! to be able to reach the center.  you can see this in the pre_zahb test_suite case if you
+      ! try running it without the T function. the center temperature will fail to rise.
+
+/ ! end of controls namelist

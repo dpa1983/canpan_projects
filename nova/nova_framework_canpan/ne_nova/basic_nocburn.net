@@ -1,0 +1,55 @@
+
+      ! the basic net is for "no frills" hydrogen and helium burning.
+      ! assumes T is low enough so can ignore advanced burning and hot cno issues.
+
+      add_isos(
+         h1 
+         he3 
+         he4 
+         c12 
+         n14 
+         o16 
+         ne20 
+         mg24
+         )
+         
+      add_reactions(
+     
+         ! pp chains
+         
+         rpp_to_he3          ! p(p e+nu)h2(p g)he3
+         rpep_to_he3         ! p(e-p nu)h2(p g)he3     
+         r_he3_he3_to_h1_h1_he4       ! he3(he3 2p)he4 
+         r34_pp2             ! he4(he3 g)be7(e- nu)li7(p a)he4 
+         r34_pp3             ! he4(he3 g)be7(p g)b8(e+ nu)be8( a)he4  
+         r_h1_he3_wk_he4               ! he3(p e+nu)he4     
+
+         ! cno cycles
+         
+         rc12_to_n14         ! c12(p g)n13(e+nu)c13(p g)n14
+         rn14_to_c12         ! n14(p g)o15(e+nu)n15(p a)c12
+         rn14_to_o16         ! n14(p g)o15(e+nu)n15(p g)o16
+         ro16_to_n14         ! o16(p g)f17(e+nu)o17(p a)n14
+
+         ! helium burning
+         
+
+         ! auxiliaries -- used only for computing rates of other reactions
+         
+         rbe7ec_li7_aux 
+         rbe7pg_b8_aux 
+         rn14pg_aux 
+         rn15pg_aux 
+         rn15pa_aux 
+         ro16ap_aux 
+         rf19pg_aux 
+         rf19pa_aux 
+         rne20ap_aux 
+         rna23pg_aux 
+         rna23pa_aux
+           
+         )     
+     
+     
+     
+     

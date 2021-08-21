@@ -1,0 +1,447 @@
+ number of species =          77
+ net name nova_weiss.net
+ net reactions 
+
+                              name          Qtotal            Qneu        category    info
+   1                    rpp_to_he3        6.935692        0.266800            pp    p(p,e+nu)h2(p,g)he3                                               
+   2                   rpep_to_he3        6.935692        1.445000            pp    p(e-p,nu)h2(p,g)he3                                               
+   3               r_h1_he3_wk_he4       19.795268        9.628000            pp    he3(p,e+nu)he4                                                    
+   4        r_he3_he3_to_h1_h1_he4       12.859577                            pp    2 he3 => 2 p + he4                                                
+   5        r_h1_h1_he4_to_he3_he3      -12.859577                            pp    2 p + he4 => 2 he3                                                
+   6                  r_he3_ag_be7        1.586096                            pp    he4(he3,g)be7                                                     
+   7          r_he4_he4_he4_to_c12        7.274747                      tri_alfa    triple alpha                                                      
+   8          r_c12_to_he4_he4_he4       -7.274747                         photo    c12 => 3 he4                                                      
+   9                  r_li7_pa_he4       17.347280                            pp    li7(p,a)he4                                                       
+  10                  r_be7_ec_li7        0.861893        0.814000            pp    be7(e-,nu)li7                                                     
+  11    r_he3_be7_to_h1_h1_he4_he4       11.273480                            pp    he3 + be7 => 2 p + 2 he4                                          
+  12               r_b8_wk_he4_he4       18.071660        6.735000            pp    b8(e+,nu)be8 => 2 he4                                             
+  13                   r_b8_gp_be7       -0.137512                         photo    b8(g,p)be7                                                        
+  14                  r_c12_ap_n15       -4.965491                           cno    c12(a,p)n15                                                       
+  15                  r_c12_ag_o16        7.161917                        burn_c    c12(a,g)o16                                                       
+  16                  r_n13_ap_o16        5.218430                           cno    n13(a,p)o16                                                       
+  17                  r_n13_gp_c12       -1.943488                         photo    n13(g,p)c12                                                       
+  18                  r_n14_ap_o17       -1.191823                           cno    n14(a,p)o17                                                       
+  19                  r_n14_ag_f18        4.414632                        burn_n    n14(a,g)f18                                                       
+  20                  r_n14_gp_c13       -7.550563                         photo    n14(g,p)c13                                                       
+  21                  r_n15_pa_c12        4.965491                           cno    n15(p,a)c12                                                       
+  22                  r_n15_ap_o18       -3.981093                           cno    n15(a,p)o18                                                       
+  23                 r_o14_ag_ne18        5.115106                        burn_o    o14(a,g)ne18                                                      
+  24                  r_o14_ap_f17        1.191602                           cno    o14(a,p)f17                                                       
+  25                  r_o14_gp_n13       -4.627094                         photo    o14(g,p)n13                                                       
+  26                  r_o15_ap_f18       -2.882149                           cno    o15(a,p)f18                                                       
+  27                 r_o15_ag_ne19        3.529081                        burn_o    o15(a,g)ne19                                                      
+  28                  r_o15_gp_n14       -7.296781                         photo    o15(g,p)n14                                                       
+  29                  r_o16_ap_f19       -8.113669                           cno    o16(a,p)f19                                                       
+  30                 r_o16_ag_ne20        4.729846                        burn_o    o16(a,g)ne20                                                      
+  31                  r_o16_gp_n15      -12.127408                         photo    o16(g,p)n15                                                       
+  32                  r_o16_ga_c12       -7.161917                         photo    o16(g,a)c12                                                       
+  33                  r_o17_pa_n14        1.191823                           cno    o17(p,a)n14                                                       
+  34                 r_o17_ag_ne21        7.347879                        burn_o    o17(a,g)ne21                                                      
+  35                  r_o18_pa_n15        3.981093                           cno    o18(p,a)n15                                                       
+  36                 r_o18_ag_ne22        9.668109                         other    o18(a,g)ne22                                                      
+  37                  r_f17_pa_o14       -1.191602                           cno    f17(p,a)o14                                                       
+  38                 r_f17_ap_ne20        4.129579                           cno    f17(a,p)ne20                                                      
+  39                  r_f17_gp_o16       -0.600267                         photo    f17(g,p)o16                                                       
+  40                 r_f18_ap_ne21        1.741424                           cno    f18(a,p)ne21                                                      
+  41                  r_f18_pa_o15        2.882149                           cno    f18(p,a)o15                                                       
+  42                  r_f18_gp_o17       -5.606455                         photo    f18(g,p)o17                                                       
+  43                  r_f19_pa_o16        8.113669                           cno    f19(p,a)o16                                                       
+  44                 r_f19_ap_ne22        1.673276                           cno    f19(a,p)ne22                                                      
+  45                  r_f19_gp_o18       -7.994833                         photo    f19(g,p)o18                                                       
+  46                 r_ne19_ga_o15       -3.529081                         photo    ne19(g,a)o15                                                      
+  47                r_ne20_ag_mg24        9.316552                       burn_ne    ne20(a,g)mg24                                                     
+  48                 r_ne20_ga_o16       -4.729846                         photo    ne20(g,a)o16                                                      
+  49                 r_ne20_gp_f19      -12.843515                         photo    ne20(g,p)f19                                                      
+  50                r_ne20_ap_na23       -2.376131                       burn_ne    ne20(a,p)na23                                                     
+  51                r_ne22_ag_mg26       10.614783                       burn_ne    ne22(a,g)mg26                                                     
+  52                 r_ne22_ga_o18       -9.668109                         photo    ne22(g,a)o18                                                      
+  53                r_na23_gp_ne22       -8.794107                         photo    na23(g,p)ne22                                                     
+  54                r_na23_ap_mg26        1.820675                       burn_na    na23(a,p)mg26                                                     
+  55                r_na23_pa_ne20        2.376131                         photo    na23(p,a)ne20                                                     
+  56                r_mg24_ap_al27       -1.600962                       burn_mg    mg24(a,p)al27                                                     
+  57                r_mg24_ag_si28        9.984146                       burn_mg    mg24(a,g)si28                                                     
+  58                r_mg24_ga_ne20       -9.316552                         photo    mg24(g,a)ne20                                                     
+  59                r_mg24_gp_na23      -11.692683                         photo    mg24(g,p)na23                                                     
+  60                r_al27_gp_mg26       -8.271046                         photo    al27(g,p)mg26                                                     
+  61                r_al27_pa_mg24        1.600962                         photo    al27(p,a)mg24                                                     
+  62                r_al27_ap_si30        2.372218                         other    al27(a,p)si30                                                     
+  63                 r_si28_ap_p31       -1.915966                       burn_si    si28(a,p)p31                                                      
+  64                 r_si28_ag_s32        6.947815                       burn_si    si28(a,g)s32                                                      
+  65                r_si28_gp_al27      -11.585108                         photo    si28(g,p)al27                                                     
+  66                r_si28_ga_mg24       -9.984146                         photo    si28(g,a)mg24                                                     
+  67                  r_p31_pg_s32        8.863781                       burn_si    p31(p,g)s32                                                       
+  68                 r_p31_pa_si28        1.915966                         photo    p31(p,a)si28                                                      
+  69                 r_s32_ap_cl35       -1.866209                        burn_s    s32(a,p)cl35                                                      
+  70                 r_s32_ag_ar36        6.640759                        burn_s    s32(a,g)ar36                                                      
+  71                  r_s32_gp_p31       -8.863781                         photo    s32(g,p)p31                                                       
+  72                 r_s32_ga_si28       -6.947815                         photo    s32(g,a)si28                                                      
+  73                 r_cl35_pa_s32        1.866209                         photo    cl35(p,a)s32                                                      
+  74                 r_ar36_ap_k39       -1.288579                       burn_ar    ar36(a,p)k39                                                      
+  75                r_ar36_ag_ca40        7.039650                       burn_ar    ar36(a,g)ca40                                                     
+  76                r_ar36_gp_cl35       -8.506968                         photo    ar36(g,p)cl35                                                     
+  77                 r_ar36_ga_s32       -6.640759                         photo    ar36(g,a)s32                                                      
+  78                 r_k39_pa_ar36        1.288579                         photo    k39(p,a)ar36                                                      
+  79                 r_ca40_gp_k39       -8.328230                         photo    ca40(g,p)k39                                                      
+  80                r_ca40_ga_ar36       -7.039650                         photo    ca40(g,a)ar36                                                     
+  81                   r_be7_pg_b8        0.137512                            pp    be7(p,g)b8                                                        
+  82                  r_c12_pg_n13        1.943488                           cno    c12(p,g)n13                                                       
+  83                  r_c13_pg_n14        7.550563                           cno    c13(p,g)n14                                                       
+  84                  r_n13_pg_o14        4.627094                           cno    n13(p,g)o14                                                       
+  85                  r_n14_pg_o15        7.296781                           cno    n14(p,g)o15                                                       
+  86                  r_n15_pg_o16       12.127408                           cno    n15(p,g)o16                                                       
+  87                  r_o16_pg_f17        0.600267                           cno    o16(p,g)f17                                                       
+  88                  r_o17_pg_f18        5.606455                           cno    o17(p,g)f18                                                       
+  89                  r_o18_pg_f19        7.994833                           cno    o18(p,g)f19                                                       
+  90                 r_f19_pg_ne20       12.843515                           cno    f19(p,g)ne20                                                      
+  91                r_ne22_pg_na23        8.794107                       burn_ne    ne22(p,g)na23                                                     
+  92                r_mg26_ga_ne22      -10.614783                         photo    mg26(g,a)ne22                                                     
+  93                r_mg26_ag_si30       10.643263                       burn_mg    mg26(a,g)si30                                                     
+  94                r_si30_ga_mg26      -10.643263                         photo    si30(g,a)mg26                                                     
+  95                 r_si30_ag_s34        7.923775                       burn_si    si30(a,g)s34                                                      
+  96                 r_s34_ga_si30       -7.923775                         photo   s34(g,a)si30                                                      
+  97                 r_s34_ag_ar38        7.207680                        burn_s    s34(a,g)ar38                                                      
+  98                 r_ar38_ga_s34       -7.207680                         photo    ar38(g,a)s34                                                      
+  99                 r_ne18_gp_f17       -3.923504                         photo    ne18(g,p)f17                                                      
+ 100                 r_ne19_gp_f18       -6.411230                         photo    ne19(g,p)f18                                                      
+ 101                  r_c14_ag_o18        6.226331                        burn_c    c14(a,g)o18                                                       
+ 102                  r_n15_ag_f19        4.013740                        burn_n    n15(a,g)f19                                                       
+ 103           r_h1_li7_to_he4_he4       17.347280                            pp                                                                      
+ 104           r_he4_he4_to_h1_li7      -17.347280                         other                                                                      
+ 105    r_h1_h1_he4_he4_to_he3_be7      -11.273480                         other                                                                      
+ 106                  r_be7_ga_he3       -1.586096                         photo                                                                      
+ 107       r_h1_b11_to_he4_he4_he4        8.682153                         other                                                                      
+ 108       r_he4_he4_he4_to_h1_b11       -8.682153                         other                                                                      
+ 109                  r_li7_ag_b11        8.665126                         other                                                                      
+ 110                  r_b11_ga_li7       -8.665126                         photo                                                                      
+ 111                  r_b11_pg_c12       15.956901                         other                                                                      
+ 112                  r_c12_gp_b11      -15.956901                         photo                                                                      
+ 113                  r_b11_ap_c14        0.783985                         other                                                                      
+ 114                  r_c14_pa_b11       -0.783985                        burn_c                                                                      
+ 115                  r_n13_wk_c13        2.220470        0.706000           cno                                                                      
+ 116            r_c14_wk-minus_n14        0.156476                         other                                                                      
+ 117                  r_c14_pg_n15       10.207424                        burn_c                                                                      
+ 118                  r_n15_gp_c14      -10.207424                         photo                                                                      
+ 119                  r_o14_wk_n14        5.143939        2.220000           cno                                                                      
+ 120                  r_o15_wk_n15        2.754167        0.996400           cno                                                                      
+ 121                  r_o16_pa_n13       -5.218430                        burn_o                                                                      
+ 122                  r_o18_ga_c14       -6.226331                         photo                                                                      
+ 123                  r_f17_wk_o17                weaklib                    cno                                                                      
+ 124            r_o17_wk-minus_f17                weaklib                  other                                                                      
+ 125                  r_f18_ga_n14       -4.414632                         photo                                                                      
+ 126                  r_f18_wk_o18                weaklib                    cno                                                                      
+ 127            r_o18_wk-minus_f18                weaklib                  other                                                                      
+ 128                  r_f19_ga_n15       -4.013740                         photo                                                                      
+ 129                 r_f17_pg_ne18        3.923504                           cno                                                                      
+ 130                 r_ne18_ga_o14       -5.115106                         photo                                                                      
+ 131                 r_ne18_wk_f18                weaklib                    cno                                                                      
+ 132           r_f18_wk-minus_ne18                weaklib                  other                                                                      
+ 133                 r_f18_pg_ne19        6.411230                         other                                                                      
+ 134                 r_ne19_wk_f19                weaklib                  other                                                                      
+ 135           r_f19_wk-minus_ne19                weaklib                  other                                                                      
+ 136         r_c12_c12_to_he4_ne20        4.617016                       c12_c12                                                                      
+ 137         r_he4_ne20_to_c12_c12       -4.617016                       burn_ne                                                                      
+ 138                 r_ne20_pa_f17       -4.129579                       burn_ne                                                                      
+ 139                 r_ne21_ga_o17       -7.347879                         photo                                                                      
+ 140                 r_ne21_pa_f18       -1.741424                       burn_ne                                                                      
+ 141                 r_ne22_pa_f19       -1.673276                       burn_ne                                                                      
+ 142                r_ne19_pg_na20        2.192690                       burn_ne                                                                      
+ 143                r_na20_gp_ne19       -2.192690                         photo                                                                      
+ 144                r_na20_wk_ne20                weaklib                  other                                                                      
+ 145          r_ne20_wk-minus_na20                weaklib                  other                                                                      
+ 146                r_ne20_pg_na21        2.431199                       burn_ne                                                                      
+ 147                r_na21_gp_ne20       -2.431199                         photo                                                                      
+ 148                 r_f17_ag_na21        6.560778                         other                                                                      
+ 149                 r_na21_ga_f17       -6.560778                         photo                                                                      
+ 150                r_ne18_ap_na21        2.637274                       burn_ne                                                                      
+ 151                r_na21_pa_ne18       -2.637274                       burn_na                                                                      
+ 152                r_na21_wk_ne21                weaklib                  other                                                                      
+ 153          r_ne21_wk-minus_na21                weaklib                  other                                                                      
+ 154                r_ne21_pg_na22        6.739629                       burn_ne                                                                      
+ 155                r_na22_gp_ne21       -6.739629                         photo                                                                      
+ 156                 r_f18_ag_na22        8.481053                         other                                                                      
+ 157                 r_na22_ga_f18       -8.481053                         photo                                                                      
+ 158                r_ne19_ap_na22        2.069823                       burn_ne                                                                      
+ 159                r_na22_pa_ne19       -2.069823                       burn_na                                                                      
+ 160                r_na22_wk_ne22                weaklib                  other                                                                      
+ 161          r_ne22_wk-minus_na22                weaklib                  other                                                                      
+ 162          r_c12_c12_to_h1_na23        2.240885                       c12_c12                                                                      
+ 163          r_h1_na23_to_c12_c12       -2.240885                       burn_na                                                                      
+ 164                 r_f19_ag_na23       10.467384                         other                                                                      
+ 165                 r_na23_ga_f19      -10.467384                         photo                                                                      
+ 166                r_na20_pg_mg21        3.226182                       burn_na                                                                      
+ 167                r_mg21_gp_na20       -3.226182                         photo                                                                      
+ 168                r_mg21_wk_na21                weaklib                  other                                                                      
+ 169          r_na21_wk-minus_mg21                weaklib                  other                                                                      
+ 170                r_na21_pg_mg22        5.501771                       burn_na                                                                      
+ 171                r_mg22_gp_na21       -5.501771                         photo                                                                      
+ 172                r_ne18_ag_mg22        8.139045                       burn_ne                                                                      
+ 173                r_mg22_ga_ne18       -8.139045                         photo                                                                      
+ 174                r_mg22_wk_na22                weaklib                  other                                                                      
+ 175          r_na22_wk-minus_mg22                weaklib                  other                                                                      
+ 176                r_na22_pg_mg23        7.580299                       burn_na                                                                      
+ 177                r_mg23_gp_na22       -7.580299                         photo                                                                      
+ 178                r_ne19_ag_mg23        9.650122                       burn_ne                                                                      
+ 179                r_mg23_ga_ne19       -9.650122                         photo                                                                      
+ 180                r_na20_ap_mg23        7.457432                       burn_na                                                                      
+ 181                r_mg23_pa_na20       -7.457432                       burn_mg                                                                      
+ 182                r_mg23_wk_na23                weaklib                  other                                                                      
+ 183          r_na23_wk-minus_mg23                weaklib                  other                                                                      
+ 184         r_c12_o16_to_he4_mg24        6.771651                        burn_o                                                                      
+ 185         r_he4_mg24_to_c12_o16       -6.771651                       burn_mg                                                                      
+ 186                r_na23_pg_mg24       11.692683                       burn_na                                                                      
+ 187                r_na21_ap_mg24        6.885354                       burn_na                                                                      
+ 188                r_mg24_pa_na21       -6.885354                       burn_mg                                                                      
+ 189                r_ne21_ag_mg25        9.885966                       burn_ne                                                                      
+ 190                r_mg25_ga_ne21       -9.885966                         photo                                                                      
+ 191                r_na22_ap_mg25        3.146337                       burn_na                                                                      
+ 192                r_mg25_pa_na22       -3.146337                       burn_mg                                                                      
+ 193                r_mg26_pa_na23       -1.820675                       burn_mg                                                                      
+ 194                r_mg22_pg_al23        0.122436                       burn_mg                                                                      
+ 195                r_al23_gp_mg22       -0.122436                         photo                                                                      
+ 196                r_al23_wk_mg23                weaklib                  other                                                                      
+ 197          r_mg23_wk-minus_al23                weaklib                  other                                                                      
+ 198                r_mg23_pg_al24        1.872149                       burn_mg                                                                      
+ 199                r_al24_gp_mg23       -1.872149                         photo                                                                      
+ 200                r_na20_ag_al24        9.329581                       burn_na                                                                      
+ 201                r_al24_ga_na20       -9.329581                         photo                                                                      
+ 202                r_mg21_ap_al24        6.103399                       burn_mg                                                                      
+ 203                r_al24_pa_mg21       -6.103399                         other                                                                      
+ 204                r_al24_wk_mg24                weaklib                  other                                                                      
+ 205          r_mg24_wk-minus_al24                weaklib                  other                                                                      
+ 206                r_mg24_pg_al25        2.271573                       burn_mg                                                                      
+ 207                r_al25_gp_mg24       -2.271573                         photo                                                                      
+ 208                r_na21_ag_al25        9.156927                       burn_na                                                                      
+ 209                r_al25_ga_na21       -9.156927                         photo                                                                      
+ 210                r_mg22_ap_al25        3.655156                       burn_mg                                                                      
+ 211                r_al25_pa_mg22       -3.655156                         other                                                                      
+ 212                r_al25_wk_mg25                weaklib                  other                                                                      
+ 213          r_mg25_wk-minus_al25                weaklib                  other                                                                      
+ 214                r_mg25_pg_al26        6.306453                       burn_mg                                                                      
+ 215                r_al26_gp_mg25       -6.306453                         photo                                                                      
+ 216                r_na22_ag_al26        9.452789                       burn_na                                                                      
+ 217                r_al26_ga_na22       -9.452789                         photo                                                                      
+ 218                r_mg23_ap_al26        1.872490                       burn_mg                                                                      
+ 219                r_al26_pa_mg23       -1.872490                         other                                                                      
+ 220                r_al26_wk_mg26                weaklib                  other                                                                      
+ 221          r_mg26_wk-minus_al26                weaklib                  other                                                                      
+ 222          r_c12_o16_to_h1_al27        5.170689                        burn_o                                                                      
+ 223          r_h1_al27_to_c12_o16       -5.170689                         other                                                                      
+ 224                r_mg26_pg_al27        8.271046                       burn_mg                                                                      
+ 225                r_na23_ag_al27       10.091721                       burn_na                                                                      
+ 226                r_al27_ga_na23      -10.091721                         photo                                                                      
+ 227                r_al23_pg_si24        3.303865                         other                                                                      
+ 228                r_si24_gp_al23       -3.303865                         photo                                                                      
+ 229                r_si24_wk_al24                weaklib                  other                                                                      
+ 230          r_al24_wk-minus_si24                weaklib                  other                                                                      
+ 231                r_al24_pg_si25        3.407705                         other                                                                      
+ 232                r_si25_gp_al24       -3.407705                         photo                                                                      
+ 233                r_mg21_ag_si25        9.511104                       burn_mg                                                                      
+ 234                r_si25_ga_mg21       -9.511104                         photo                                                                      
+ 235                r_si25_wk_al25                weaklib                  other                                                                      
+ 236          r_al25_wk-minus_si25                weaklib                  other                                                                      
+ 237                r_al25_pg_si26        5.517429                         other                                                                      
+ 238                r_si26_gp_al25       -5.517429                         photo                                                                      
+ 239                r_mg22_ag_si26        9.172585                       burn_mg                                                                      
+ 240                r_si26_ga_mg22       -9.172585                         photo                                                                      
+ 241                r_al23_ap_si26        9.050149                         other                                                                      
+ 242                r_si26_pa_al23       -9.050149                       burn_si                                                                      
+ 243                r_si26_wk_al26                weaklib                  other                                                                      
+ 244          r_al26_wk-minus_si26                weaklib                  other                                                                      
+ 245                r_al26_pg_si27        7.462960                         other                                                                      
+ 246                r_si27_gp_al26       -7.462960                         photo                                                                      
+ 247                r_mg23_ag_si27        9.335451                       burn_mg                                                                      
+ 248                r_si27_ga_mg23       -9.335451                         photo                                                                      
+ 249                r_al24_ap_si27        7.463302                         other                                                                      
+ 250                r_si27_pa_al24       -7.463302                       burn_si                                                                      
+ 251                r_si27_wk_al27                weaklib                  other                                                                      
+ 252          r_al27_wk-minus_si27                weaklib                  other                                                                      
+ 253         r_o16_o16_to_he4_si28        9.593879                       o16_o16                                                                      
+ 254         r_he4_si28_to_o16_o16       -9.593879                       burn_si                                                                      
+ 255        r_c12_ne20_to_he4_si28       12.025950                       burn_ne                                                                      
+ 256        r_he4_si28_to_c12_ne20      -12.025950                       burn_si                                                                      
+ 257                r_al27_pg_si28       11.585108                         other                                                                      
+ 258                r_al25_ap_si28        7.712573                         other                                                                      
+ 259                r_si28_pa_al25       -7.712573                       burn_si                                                                      
+ 260                r_mg25_ag_si29       11.127136                       burn_mg                                                                      
+ 261                r_si29_ga_mg25      -11.127136                         photo                                                                      
+ 262                r_al26_ap_si29        4.820683                         other                                                                      
+ 263                r_si29_pa_al26       -4.820683                       burn_si                                                                      
+ 264                r_si30_pa_al27       -2.372218                       burn_si                                                                      
+ 265                 r_si26_pg_p27        0.861367                       burn_si                                                                      
+ 266                 r_p27_gp_si26       -0.861367                         photo                                                                      
+ 267                 r_al23_ag_p27        9.911516                         other                                                                      
+ 268                 r_p27_ga_al23       -9.911516                         photo                                                                      
+ 269                 r_si24_ap_p27        6.607651                       burn_si                                                                      
+ 270                 r_p27_pa_si24       -6.607651                         other                                                                      
+ 271                 r_p27_wk_si27                weaklib                  other                                                                      
+ 272           r_si27_wk-minus_p27                weaklib                  other                                                                      
+ 273                 r_si27_pg_p28        2.063421                       burn_si                                                                      
+ 274                 r_p28_gp_si27       -2.063421                         photo                                                                      
+ 275                 r_al24_ag_p28        9.526723                         other                                                                      
+ 276                 r_p28_ga_al24       -9.526723                         photo                                                                      
+ 277                 r_si25_ap_p28        6.119018                       burn_si                                                                      
+ 278                 r_p28_pa_si25       -6.119018                         other                                                                      
+ 279                 r_p28_wk_si28                weaklib                  other                                                                      
+ 280           r_si28_wk-minus_p28                weaklib                  other                                                                      
+ 281                 r_si28_pg_p29        2.748798                       burn_si                                                                      
+ 282                 r_p29_gp_si28       -2.748798                         photo                                                                      
+ 283                 r_al25_ag_p29       10.461371                         other                                                                      
+ 284                 r_p29_ga_al25      -10.461371                         photo                                                                      
+ 285                 r_si26_ap_p29        4.943942                       burn_si                                                                      
+ 286                 r_p29_pa_si26       -4.943942                         other                                                                      
+ 287                 r_p29_wk_si29                weaklib                  other                                                                      
+ 288           r_si29_wk-minus_p29                weaklib                  other                                                                      
+ 289                 r_si29_pg_p30        5.594500                       burn_si                                                                      
+ 290                 r_p30_gp_si29       -5.594500                         photo                                                                      
+ 291                 r_al26_ag_p30       10.415183                         other                                                                      
+ 292                 r_p30_ga_al26      -10.415183                         photo                                                                      
+ 293                 r_si27_ap_p30        2.952222                       burn_si                                                                      
+ 294                 r_p30_pa_si27       -2.952222                         other                                                                      
+ 295                 r_p30_wk_si30                weaklib                  other                                                                      
+ 296           r_si30_wk-minus_p30                weaklib                  other                                                                      
+ 297           r_o16_o16_to_h1_p31        7.677914                       o16_o16                                                                      
+ 298           r_h1_p31_to_o16_o16       -7.677914                         other                                                                      
+ 299          r_c12_ne20_to_h1_p31       10.109985                       burn_ne                                                                      
+ 300          r_h1_p31_to_c12_ne20      -10.109985                         other                                                                      
+ 301                 r_si30_pg_p31        7.296925                       burn_si                                                                      
+ 302                 r_p31_gp_si30       -7.296925                         photo                                                                      
+ 303                 r_al27_ag_p31        9.669142                         other                                                                      
+ 304                 r_p31_ga_al27       -9.669142                         photo                                                                      
+ 305                  r_p28_pg_s29        3.289798                         other                                                                      
+ 306                  r_s29_gp_p28       -3.289798                         photo                                                                      
+ 307                 r_si25_ag_s29        9.408816                       burn_si                                                                      
+ 308                 r_s29_ga_si25       -9.408816                         photo                                                                      
+ 309                  r_s29_wk_p29                weaklib                  other                                                                      
+ 310            r_p29_wk-minus_s29                weaklib                  other                                                                      
+ 311                  r_p29_pg_s30        4.398874                         other                                                                      
+ 312                  r_s30_gp_p29       -4.398874                         photo                                                                      
+ 313                 r_si26_ag_s30        9.342816                       burn_si                                                                      
+ 314                 r_s30_ga_si26       -9.342816                         photo                                                                      
+ 315                  r_p27_ap_s30        8.481449                         other                                                                      
+ 316                  r_s30_pa_p27       -8.481449                        burn_s                                                                      
+ 317                  r_s30_wk_p30                weaklib                  other                                                                      
+ 318            r_p30_wk-minus_s30                weaklib                  other                                                                      
+ 319                  r_p30_pg_s31        6.133041                         other                                                                      
+ 320                  r_s31_gp_p30       -6.133041                         photo                                                                      
+ 321                 r_si27_ag_s31        9.085264                       burn_si                                                                      
+ 322                 r_s31_ga_si27       -9.085264                         photo                                                                      
+ 323                  r_p28_ap_s31        7.021843                         other                                                                      
+ 324                  r_s31_pa_p28       -7.021843                        burn_s                                                                      
+ 325                  r_s31_wk_p31                weaklib                  other                                                                      
+ 326            r_p31_wk-minus_s31                weaklib                  other                                                                      
+ 327                  r_p29_ap_s32        4.199017                         other                                                                      
+ 328                  r_s32_pa_p29       -4.199017                        burn_s                                                                      
+ 329                 r_si29_ag_s33        7.115864                       burn_si                                                                      
+ 330                 r_s33_ga_si29       -7.115864                         photo                                                                      
+ 331                  r_p30_ap_s33        1.521365                         other                                                                      
+ 332                  r_s33_pa_p30       -1.521365                        burn_s                                                                      
+ 333                  r_p31_ap_s34        0.626851                         other                                                                      
+ 334                  r_s34_pa_p31       -0.626851                        burn_s                                                                      
+ 335                 r_s31_pg_cl32        1.574092                        burn_s                                                                      
+ 336                 r_cl32_gp_s31       -1.574092                         photo                                                                      
+ 337                 r_p28_ag_cl32        8.595934                         other                                                                      
+ 338                 r_cl32_ga_p28       -8.595934                         photo                                                                      
+ 339                 r_s29_ap_cl32        5.306137                        burn_s                                                                      
+ 340                 r_cl32_pa_s29       -5.306137                         other                                                                      
+ 341                 r_cl32_wk_s32                weaklib                  other                                                                      
+ 342           r_s32_wk-minus_cl32                weaklib                  other                                                                      
+ 343                 r_s32_pg_cl33        2.276705                        burn_s                                                                      
+ 344                 r_cl33_gp_s32       -2.276705                         photo                                                                      
+ 345                 r_p29_ag_cl33        6.475722                         other                                                                      
+ 346                 r_cl33_ga_p29       -6.475722                         photo                                                                      
+ 347                 r_s30_ap_cl33        2.076848                        burn_s                                                                      
+ 348                 r_cl33_pa_s30       -2.076848                         other                                                                      
+ 349                 r_cl33_wk_s33                weaklib                  other                                                                      
+ 350           r_s33_wk-minus_cl33                weaklib                  other                                                                      
+ 351                 r_s33_pg_cl34        5.142752                        burn_s                                                                      
+ 352                 r_cl34_gp_s33       -5.142752                         photo                                                                      
+ 353                 r_p30_ag_cl34        6.664116                         other                                                                      
+ 354                 r_cl34_ga_p30       -6.664116                         photo                                                                      
+ 355                 r_s31_ap_cl34        0.531075                        burn_s                                                                      
+ 356                 r_cl34_pa_s31       -0.531075                         other                                                                      
+ 357                 r_cl34_wk_s34                weaklib                  other                                                                      
+ 358           r_s34_wk-minus_cl34                weaklib                  other                                                                      
+ 359                 r_s34_pg_cl35        6.370722                        burn_s                                                                      
+ 360                 r_cl35_gp_s34       -6.370722                         photo                                                                      
+ 361                 r_p31_ag_cl35        6.997572                         other                                                                      
+ 362                 r_cl35_ga_p31       -6.997572                         photo                                                                      
+ 363                 r_s33_ap_cl36       -1.928190                        burn_s                                                                      
+ 364                 r_cl36_pa_s33        1.928190                         other                                                                      
+ 365                 r_s34_ap_cl37       -3.034309                        burn_s                                                                      
+ 366                 r_cl37_pa_s34        3.034309                         other                                                                      
+ 367                r_cl32_pg_ar33        3.343339                         other                                                                      
+ 368                r_ar33_gp_cl32       -3.343339                         photo                                                                      
+ 369                 r_s29_ag_ar33        8.649476                        burn_s                                                                      
+ 370                 r_ar33_ga_s29       -8.649476                         photo                                                                      
+ 371                r_ar33_wk_cl33                weaklib                  other                                                                      
+ 372          r_cl33_wk-minus_ar33                weaklib                  other                                                                      
+ 373                r_cl33_pg_ar34        4.662754                         other                                                                      
+ 374                r_ar34_gp_cl33       -4.662754                         photo                                                                      
+ 375                 r_s30_ag_ar34        6.739602                        burn_s                                                                      
+ 376                 r_ar34_ga_s30       -6.739602                         photo                                                                      
+ 377                r_ar34_wk_cl34                weaklib                  other                                                                      
+ 378          r_cl34_wk-minus_ar34                weaklib                  other                                                                      
+ 379                r_cl34_pg_ar35        5.896604                         other                                                                      
+ 380                r_ar35_gp_cl34       -5.896604                         photo                                                                      
+ 381                 r_s31_ag_ar35        6.427680                        burn_s                                                                      
+ 382                 r_ar35_ga_s31       -6.427680                         photo                                                                      
+ 383                r_cl32_ap_ar35        4.853588                         other                                                                      
+ 384                r_ar35_pa_cl32       -4.853588                       burn_ar                                                                      
+ 385                r_ar35_wk_cl35                weaklib                  other                                                                      
+ 386          r_cl35_wk-minus_ar35                weaklib                  other                                                                      
+ 387                r_cl35_pg_ar36        8.506968                         other                                                                      
+ 388                r_cl33_ap_ar36        4.364054                         other                                                                      
+ 389                r_ar36_pa_cl33       -4.364054                       burn_ar                                                                      
+ 390                r_ar36_wk_cl36                weaklib                  other                                                                      
+ 391          r_cl36_wk-minus_ar36                weaklib                  other                                                                      
+ 392                r_cl36_pg_ar37        8.714771                         other                                                                      
+ 393                r_ar37_gp_cl36       -8.714771                         photo                                                                      
+ 394                 r_s33_ag_ar37        6.786582                        burn_s                                                                      
+ 395                 r_ar37_ga_s33       -6.786582                         photo                                                                      
+ 396                r_cl34_ap_ar37        1.643830                         other                                                                      
+ 397                r_ar37_pa_cl34       -1.643830                       burn_ar                                                                      
+ 398                r_ar37_wk_cl37                weaklib                  other                                                                      
+ 399          r_cl37_wk-minus_ar37                weaklib                  other                                                                      
+ 400                r_cl37_pg_ar38       10.241989                         other                                                                      
+ 401                r_ar38_gp_cl37      -10.241989                         photo                                                                      
+ 402                r_cl35_ap_ar38        0.836958                         other                                                                      
+ 403                r_ar38_pa_cl35       -0.836958                       burn_ar                                                                      
+ 404                 r_ar35_pg_k36        1.667728                       burn_ar                                                                      
+ 405                 r_k36_gp_ar35       -1.667728                         photo                                                                      
+ 406                 r_cl32_ag_k36        6.521316                         other                                                                      
+ 407                 r_k36_ga_cl32       -6.521316                         photo                                                                      
+ 408                 r_ar33_ap_k36        3.177977                       burn_ar                                                                      
+ 409                 r_k36_pa_ar33       -3.177977                         other                                                                      
+ 410                 r_k36_wk_ar36                weaklib                  other                                                                      
+ 411           r_ar36_wk-minus_k36                weaklib                  other                                                                      
+ 412                 r_ar36_pg_k37        1.857628                       burn_ar                                                                      
+ 413                 r_k37_gp_ar36       -1.857628                         photo                                                                      
+ 414                 r_cl33_ag_k37        6.221682                         other                                                                      
+ 415                 r_k37_ga_cl33       -6.221682                         photo                                                                      
+ 416                 r_ar34_ap_k37        1.558928                       burn_ar                                                                      
+ 417                 r_k37_pa_ar34       -1.558928                         other                                                                      
+ 418                 r_k37_wk_ar37                weaklib                  other                                                                      
+ 419           r_ar37_wk-minus_k37                weaklib                  other                                                                      
+ 420                 r_ar37_pg_k38        5.142000                       burn_ar                                                                      
+ 421                 r_k38_gp_ar37       -5.142000                         photo                                                                      
+ 422                 r_cl34_ag_k38        6.785830                         other                                                                      
+ 423                 r_k38_ga_cl34       -6.785830                         photo                                                                      
+ 424                 r_ar35_ap_k38        0.889226                       burn_ar                                                                      
+ 425                 r_k38_pa_ar35       -0.889226                         other                                                                      
+ 426                 r_k38_wk_ar38                weaklib                  other                                                                      
+ 427           r_ar38_wk-minus_k38                weaklib                  other                                                                      
+ 428                 r_ar38_pg_k39        6.381430                       burn_ar                                                                      
+ 429                 r_k39_gp_ar38       -6.381430                         photo                                                                      
+ 430                 r_cl35_ag_k39        7.218388                         other                                                                      
+ 431                 r_k39_ga_cl35       -7.218388                         photo                                                                      
+ 432                 r_k38_pg_ca39        5.762678                         other                                                                      
+ 433                 r_ca39_gp_k38       -5.762678                         photo                                                                      
+ 434                r_ar35_ag_ca39        6.651904                       burn_ar                                                                      
+ 435                r_ca39_ga_ar35       -6.651904                         photo                                                                      
+ 436                 r_k36_ap_ca39        4.984175                         other                                                                      
+ 437                 r_ca39_pa_k36       -4.984175                       burn_ca                                                                      
+ 438                 r_ca39_wk_k39                weaklib                  other                                                                      
+ 439           r_k39_wk-minus_ca39                weaklib                  other                                                                      
+ 440                 r_k39_pg_ca40        8.328230                         other                                                                      
+ 441                 r_k37_ap_ca40        5.182023                         other                                                                      
+ 442                 r_ca40_pa_k37       -5.182023                       burn_ca

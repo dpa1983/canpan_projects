@@ -1,0 +1,281 @@
+
+! inlist_ne_nova
+
+&star_job
+
+      show_log_description_at_start = .false.
+      show_net_reactions_info = .true.
+      
+      load_saved_model = .true.
+      saved_model_name = '../ne_wd_models/ne_wd_mwd_twd.mod' 
+
+    ! save_model_when_terminate = .true.
+    ! save_model_filename = 'ne_wd_mwd_twd_test.mod'
+
+      steps_to_take_before_terminate = nmod
+
+      change_net = .true.      
+    ! new_net_name = 'nova_ext.net'
+      new_net_name = 'nova_weiss.net'
+
+      change_v_flag = .true.
+      new_v_flag = .true.
+
+      set_initial_age = .true.
+      initial_age = 0 ! in years
+
+      set_tau_factor = .true.
+      set_to_this_tau_factor = 25
+
+    ! pgstar_flag = .true.
+
+      use_se_output = .true. ! se is based on hdf5.  ask Falk about it.
+
+    ! set_rates_preference = .true. ! .false. ! for use by net + rates modules
+      new_rates_preference = 2 ! 1
+         ! 1 = NACRE rates -- this is the default
+         ! 2 = jina reaclib rates
+
+      kappa_CO_prefix = 'gn93_co' ! for C/O enhanced (Type 2 OPAL opacities) -- only have gn93
+
+/ ! end of star_job namelist
+
+
+&controls
+
+      logQ_limit = 100
+      gamma_center_limit = 10000 ! 1000 ! FOR THIS TEST
+
+      mixing_length_alpha = 1.91
+            
+      star_mass_max_limit = 1.5d0
+   	
+      mass_change = mymdot ! rate of accretion (Msun/year)
+    ! mass_change = 0d0    ! rate of accretion (Msun/year)
+
+    ! max_timestep = 3.1556d11 ! in seconds.  max_timestep <= 0 means no upper limit.
+
+      min_center_cell_dq = 1d-7
+      max_center_cell_dq = 1d-6
+      max_surface_cell_dq = 1d-12 ! 1d-8
+
+      max_num_profile_models = 1000  ! < 0 means no limit
+         ! maximum number of saved profiles
+         ! if there's no limit on the number of profiles saved,
+         ! you can fill up your disk -- I've done it.
+         ! so it's a good idea to set this limit to a reasonable number such as 20 or 30.
+         ! once that many have been saved during a run, old ones will be discarded
+         ! to make room for new ones.
+         ! profiles that were saved for key events are given priority
+         ! and aren't removed as long as there
+         ! is a lower priority profile that can be discarded instead.
+
+      photostep = 100
+      profile_interval = 20 ! 100
+      history_interval = 1
+      terminal_cnt = 1
+      write_header_frequency = 10
+
+           !these params provide the option to turn off mass change when have small timesteps.
+           !mass change doesn't do much in such cases except make convergence harder.
+           !mass_change_full_on_dt = 1d4 ! (seconds)
+      mass_change_full_on_dt = 1d0 ! (seconds)
+           !mass_change_full_off_dt = 1d3 ! (seconds)
+      mass_change_full_off_dt = 1d-1 ! (seconds)
+           !between these limits, mass change is gradually reduced
+
+      min_timestep_limit = 1d-12
+                  
+      RGB_wind_scheme = ''
+      AGB_wind_scheme = ''
+
+      xa_function_species(1) = 'h1'  ! name of nuclide as defined in chem_def
+		xa_function_weight(1) = 20
+		xa_function_param(1) = 1d-6
+      xa_function_species(2) = 'he4'  ! name of nuclide as defined in chem_def
+		xa_function_weight(2) = 20
+		xa_function_param(2) = 1d-6 ! 1d-2
+
+      delta_lgL_H_limit = 0.05 ! limit for magnitude of change in lgL_H
+      delta_lgL_H_hard_limit = 0.5
+      lgL_H_burn_min = 1.5 ! ignore changes in lgL_H if value is less than this
+
+      delta_lgL_He_limit = 0.025 ! limit for magnitude of change in lgL_He
+      delta_lgL_He_hard_limit = 1
+      lgL_He_burn_min = 2.5 ! ignore changes in lgL_He if value is less than this
+      
+      delta_lgRho_limit = 1 ! limit for magnitude of max change in log10 density at any point
+      delta_lgRho_hard_limit = -1
+
+      ! limit for magnitude of change in log10(L/Lsun)
+      delta_lgL_limit = 0.05
+      delta_lgL_hard_limit = 0.15
+
+      varcontrol_target = 1d-3
+
+          ! NOTE: for super eddington wind,
+          ! we use Ledd averaged by mass to optical depth tau = surf_avg_tau
+      super_eddington_wind_eta = 1
+      surf_avg_tau = 1 ! 100 ! use mass avg down to this optical depth
+          ! parameter for mass loss driven by super Eddington luminosity
+      super_eddington_wind_Ledd_factor = 0.5 ! 1
+          ! divide L by this factor when computing super Eddington wind
+          ! e.g., if this is 2, then only get wind when L/2 > Ledd      
+
+      net_logTcut_lo = 5.3d0
+      net_logTcut_lim = 5.4d0
+
+    ! opacities
+      use_Type2_opacities = .true. ! `.false.
+      Zbase = 0.02
+
+      accrete_same_as_surface = .false.
+      accrete_given_mass_fractions = .true.
+      num_accretion_species = 42
+      accretion_species_id(1) = 'h1'
+      accretion_species_xa(1) = 0.7064434347E+00
+      accretion_species_id(2) = 'h2'
+      accretion_species_xa(2) = 0.0000000000E+00
+      accretion_species_id(3) = 'he3'
+      accretion_species_xa(3) = 0.5910517699E-04
+      accretion_species_id(4) = 'he4'
+      accretion_species_xa(4) = 0.2734974601E+00
+      accretion_species_id(5) = 'li6'
+      accretion_species_xa(5) = 0.5353264391E-11
+      accretion_species_id(6) = 'li7'
+      accretion_species_xa(6) = 0.7605094236E-10
+      accretion_species_id(7) = 'be9'
+      accretion_species_xa(7) = 0.1034011573E-09
+      accretion_species_id(8) = 'b10'
+      accretion_species_xa(8) = 0.6417805337E-09
+      accretion_species_id(9) = 'b11'
+      accretion_species_xa(9) = 0.2855890995E-08
+      accretion_species_id(10) = 'c12'
+      accretion_species_xa(10) = 0.3424728710E-02
+      accretion_species_id(11) = 'c13'
+      accretion_species_xa(11) = 0.4156115450E-04
+      accretion_species_id(12) = 'n14'
+      accretion_species_xa(12) = 0.1058807927E-02
+      accretion_species_id(13) = 'n15'
+      accretion_species_xa(13) = 0.4170720317E-05
+      accretion_species_id(14) = 'o16'
+      accretion_species_xa(14) = 0.9624352087E-02
+      accretion_species_id(15) = 'o17'
+      accretion_species_xa(15) = 0.3813069764E-05
+      accretion_species_id(16) = 'o18'
+      accretion_species_xa(16) = 0.2171062075E-04
+      accretion_species_id(17) = 'f19'
+      accretion_species_xa(17) = 0.5610951191E-06
+      accretion_species_id(18) = 'ne20'
+      accretion_species_xa(18) = 0.1817732781E-02
+      accretion_species_id(19) = 'ne21'
+      accretion_species_xa(19) = 0.4575276774E-05
+      accretion_species_id(20) = 'ne22'
+      accretion_species_xa(20) = 0.1470235484E-03
+      accretion_species_id(21) = 'na23'
+      accretion_species_xa(21) = 0.3999546275E-04
+      accretion_species_id(22) = 'mg24'
+      accretion_species_xa(22) = 0.5862424215E-03
+      accretion_species_id(23) = 'mg25'
+      accretion_species_xa(23) = 0.7733091830E-04
+      accretion_species_id(24) = 'mg26'
+      accretion_species_xa(24) = 0.8848023854E-04
+      accretion_species_id(25) = 'al27'
+      accretion_species_xa(25) = 0.6481069133E-04
+      accretion_species_id(26) = 'si28'
+      accretion_species_xa(26) = 0.7452665396E-03
+      accretion_species_id(27) = 'si29'
+      accretion_species_xa(27) = 0.3919402664E-04
+      accretion_species_id(28) = 'si30'
+      accretion_species_xa(28) = 0.2672780432E-04
+      accretion_species_id(29) = 'p31'
+      accretion_species_xa(29) = 0.7106317116E-05
+      accretion_species_id(30) = 's32'
+      accretion_species_xa(30) = 0.4010871544E-03
+      accretion_species_id(31) = 's33'
+      accretion_species_xa(31) = 0.3264811362E-05
+      accretion_species_id(32) = 's34'
+      accretion_species_xa(32) = 0.1890424712E-04
+      accretion_species_id(33) = 's36'
+      accretion_species_xa(33) = 0.8072988096E-07
+      accretion_species_id(34) = 'cl35'
+      accretion_species_xa(34) = 0.6821092724E-05
+      accretion_species_id(35) = 'cl37'
+      accretion_species_xa(35) = 0.2305791872E-05
+      accretion_species_id(36) = 'ar36'
+      accretion_species_xa(36) = 0.8202156130E-04
+      accretion_species_id(37) = 'ar38'
+      accretion_species_xa(37) = 0.1574147455E-04
+      accretion_species_id(38) = 'ar40'
+      accretion_species_xa(38) = 0.2650195965E-07
+      accretion_species_id(39) = 'k39'
+      accretion_species_xa(39) = 0.3899726113E-05
+      accretion_species_id(40) = 'k40'
+      accretion_species_xa(40) = 0.5005111275E-09
+      accretion_species_id(41) = 'k41'
+      accretion_species_xa(41) = 0.2958666453E-06
+      accretion_species_id(42) = 'ca40'
+      accretion_species_xa(42) = 0.7225208375E-04
+
+      which_atm_option = 'grey_and_kap'
+      
+      use_artificial_viscosity = .false. ! .true.
+      l1_coef = 0.1 ! increase to as much as 1d3 to suppress pulsations
+            !l1_coef = 1000 ! increase to as much as 1d3 to suppress pulsations
+      
+      ! limit for magnitude of max change in log10 temperature at any point 
+
+      !delta_lgT_limit = 0.05  
+      !delta_lgT_hard_limit = 1
+
+      ! limit for magnitude of max change in log10 temperature at photosphere   
+
+      !delta_lgTeff_limit = 0.01  
+      !delta_lgTeff_hard_limit = 0.03
+         
+      ! change controls during mass ejection by super Eddington wind
+
+      delta_lgT_limit = 0.5
+      delta_lgT_hard_limit = 1
+
+      delta_lgTeff_limit = 0.10 
+      delta_lgTeff_hard_limit = 0.30
+
+      mesh_delta_coeff = 1.0
+
+      ! apply smoothing to abundances in newly nonconvective regions
+      smooth_convective_bdy = .false. ! .true.
+      max_delta_limit_for_smooth = 0.1
+      ! don't smooth across a region where any mass fraction changes by more than this limit
+
+      remove_mixing_glitches = .true. ! if true, then okay to remove gaps and singletons
+      okay_to_remove_mixing_singleton = .true.
+
+      min_convective_gap = -1 ! 0.1
+      ! close gap between convective regions if smaller than this (< 0 means skip this)
+      ! gap measured radially in units of pressure scale height
+
+! Resolution Stuff!!!
+      ! mass fraction gradients
+
+      ! xa_function = xa_function_weight*log10(xa + xa_function_param),
+      ! up to num_xa_function of these (see star_def for value of num_xa_function).
+
+      xa_function_species(1) = 'o16'  ! name of nuclide as defined in chem_def
+                xa_function_weight(1) = 20
+                xa_function_param(1) = 1d-6
+
+      ! temperature gradient
+      ! T_function1 = T_function1_weight*log10(T)
+                T_function1_weight = 110
+      ! T_function2 = T_function2_weight*log10(T / (T + T_function2_param))
+                T_function2_weight = 80
+                T_function2_param = 2d8 ! 7d8
+      ! largest change in T_function2 happens around this temperature
+      ! default value puts this in the envelope ionization region.
+
+      ! NOTE: the T gradient mesh control seems to be necessary to allow burning that starts off center
+      ! to be able to reach the center.  you can see this in the pre_zahb test_suite case if you
+      ! try running it without the T function. the center temperature will fail to rise.
+
+/ ! end of controls namelist

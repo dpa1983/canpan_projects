@@ -1,0 +1,295 @@
+#
+# this script asks to specify parameters for MESA nova simulation and starts it
+#
+
+die () {
+    echo ""
+    echo >&2 "$@"
+    echo ""
+    exit 1
+}
+
+clear
+echo ""
+echo "Deleting old output files..."
+./out_clean
+
+echo ""
+if [ $# -eq 0 ]
+then
+   echo "At least, WD's mass must be given as an input argument!"
+   echo ""
+   echo "The input arguments can be WD's mass (in Msun) and initial central temperature (in MK),"
+   echo "a mass accretion rate (in Msun/yr), and a number of models to compute."
+   echo "They must be given in this order and separated by spaces."
+   echo "The mass accretion rate is coded by the following letters:"
+   echo "   A  (1e-10 Msun/yr)  "
+   echo "   B  (1e-11 Msun/yr)  "
+   echo "   C  (1e-9 Msun/yr)  "
+   echo "   X  (2e-10 Msun/yr)  "
+   echo "   Z  (1e-7 Msun/yr)  "
+   die "Ending..."
+elif [ $1 != "0.65" -a $1 != "0.85" -a $1 != "1.0" -a $1 != "1.15" -a $1 != "1.2" ]
+then
+   die "At present, the first argument can only be 0.65, 0.85, 1.0, 1.15, or 1.2. Ending..."
+else
+   echo "You have chosen the CO WD model with the mass $1 Msun"
+   mwd=$1
+   if [ $# -eq 1 ]
+   then
+      echo "MESA will use the default values for the WD's temperature (30 MK),"
+      echo "mass accretion rate (1e-10 Msun/yr), and number of models to compute (1000)."
+      twd="30"
+      mymdot="1d-10"
+      mdotsym="A"
+      nmod="1000"
+   elif [ $1 = "0.65" -a $2 != "30" -a $2 != "20" ]
+   then
+      die "At present, only 20 and 30 MK models is avaiable for the CO WD with the mass $1 Msun. Ending..."
+   elif [ $1 = "0.85" -a $2 != "15" ]
+   then
+      die "At present, only a 15 MK model is avaiable for the CO WD with the mass $1 Msun. Ending..."
+   elif [ $1 = "1.0" -a $2 != "30" -a $2 != "20" -a $2 != "15" -a $2 != "12" ]
+   then
+      die "At present, only 30, 20, 15, and 12 MK models are avaiable for the CO WD with the mass $1 Msun. Ending..."
+   elif [ $1 = "1.15" -a $2 != "30" -a $2 != "25" -a $2 != "20" -a $2 != "15" -a $2 != "12" -a $2 != "10" -a $2 != "7" ]
+   then
+      die "At present, only a 30, 25, 20, 15, 12, 10, and 7 MK models are avaiable for the CO WD with the mass $1 Msun. Ending..."
+   elif [ $1 = "1.2" -a $2 != "30" -a $2 != "20" -a $2 != "25" -a $2 != "15" -a $2 != "10" -a $2 != "7" -a $2 != "3.3" ]
+   then
+      die "At present, only a 30, 25, 20, 15, 10, 7, and 3.3 MK models are avaiable for the CO WD with the mass $1 Msun. Ending..."
+   else
+      echo "and initial central temperature $2 MK."
+      twd=$2
+      if [ $# -eq 2 ]
+      then
+         echo "MESA will use the default values for the mass accretion rate (1d-10 Msun/yr),"
+         echo "and number of models to compute (1000)."
+         mymdot="1d-10"
+         mdotsym="A"
+         nmod="1000"
+      elif [ $3 != "A" -a $3 != "B" -a $3 != "C" -a $3 != "X" -a $3 != "Z" ]
+      then
+         echo ""
+         echo "The mass accretion rate has been specified incorrectly."
+         echo "It must be coded by one of the following letters:"
+         echo "   A  (1e-10 Msun/yr)  "
+         echo "   B  (1e-11 Msun/yr)  "
+         echo "   C  (1e-9 Msun/yr)  "
+         echo "   X  (2e-10 Msun/yr)  "
+         echo "   Z  (1e-7 Msun/yr)  "
+         die "Ending..."
+      else
+         if [ $3 = "A" ] 
+         then 
+            mymdot="1d-10" 
+            mdotsym="A"
+         fi
+         if [ $3 = "B" ] 
+         then 
+            mymdot="1d-11" 
+            mdotsym="B"
+         fi
+         if [ $3 = "C" ] 
+         then 
+            mymdot="1d-9"  
+            mdotsym="C"
+         fi
+         if [ $3 = "X" ] 
+         then 
+            mymdot="2d-10"  
+            mdotsym="X"
+         fi
+         if [ $3 = "Z" ] 
+         then 
+            mymdot="1d-7"  
+            mdotsym="Z"
+         fi
+         echo "The mass accretion rate is $mymdot."
+         if [ $# -eq 3 ]
+         then
+            echo "MESA will use the default number of models to compute (1000)."
+            nmod="1000"
+         else
+            echo "MESA will compute $4 models."
+            nmod=$4
+         fi
+      fi
+   fi
+fi
+
+
+echo ""
+echo "Would you like MESA to take into account convective boundary mixing at the bottom of"
+echo "the accreted envelope that will penetrate into the WD core? (yes/no)"
+read answer
+while [ $answer != "yes" -a $answer != "no" ]
+do
+   echo "I don't understand your answer. Please, answer yes or no."
+   read answer
+done
+if [ $answer = "no" ]
+then
+   echo ""
+   echo "MESA will not take into account convective boundary mixing."
+   echo ""
+   echo "As an alternative,"
+   echo "would you like MESA to use a mixture of equal amounts of the CO WD"
+   echo "and solar-composition materials in the accreted envelope? (yes/no)"
+   read answer
+   while [ $answer != "yes" -a $answer != "no" ]
+   do
+      echo "I don't understand your answer. Please, answer yes or no."
+      read answer
+   done
+   if [ $answer = "no" ]
+   then
+      comp="solar"
+      echo ""
+      echo "MESA will assume that the accreted envelope has the solar composition."
+   else
+      comp="mixed"
+      echo ""
+      echo "MESA will use a mixture of equal amounts of the CO WD"
+      echo "and solar-composition materials in the accreted envelope."
+   fi
+else
+   comp="ovsh"
+   echo ""
+   echo "Convective boundary mixing will be taken into account."
+fi
+
+echo ""
+echo "Would you like MESA to save results in a separate directory,"
+echo "so that you could use them later? (yes/no)"
+read answer
+while [ $answer != "yes" -a $answer != "no" ]
+do
+   echo "I don't understand your answer. Please, answer yes or no."
+   read answer
+done
+if [ $answer = "no" ]
+then
+   store="no"
+   echo ""
+   echo "MESA will not create a separate directory to save results."
+else
+   store="yes"
+   echo ""
+   echo "MESA will create a separate directory to save results."
+fi
+
+echo ""
+echo "Would you like to start nova simulation with these parameters? (yes/no)"
+read answer
+while [ $answer != "yes" -a $answer != "no" ]
+do
+   echo "I don't understand your answer. Please, answer yes or no."
+   read answer
+done
+if [ $answer = "no" ]
+then
+   die "Please, specify the input arguments again. Ending..."
+else
+   echo ""
+   echo "MESA is starting the CO nova simulation..."
+   echo ""
+fi
+
+#echo $mwd
+#echo $twd
+#echo $mymdot
+#echo $nmod
+#echo $comp
+#exit 0
+
+if [ $comp = "solar" ]
+then
+   sed s/mwd/$mwd/ inlist_co_nova.template > inlist.1
+elif [ $comp = "mixed" ]
+then
+   sed s/mwd/$mwd/ inlist_co_nova_mixed.template > inlist.1
+elif [ $comp = "ovsh" ]
+then
+   sed s/mwd/$mwd/ inlist_co_nova_ovsh.template > inlist.1
+else
+   die "Parameter $comp has not been defined correctly. Ending..."
+fi
+sed s/twd/$twd/ inlist.1 > inlist.2
+sed s/mymdot/$mymdot/ inlist.2 > inlist.3
+sed s/nmod/$nmod/ inlist.3 > inlist_co_nova
+rm -f inlist.1 inlist.2 inlist.3
+
+nice -n 19 ./rn
+
+if [ -f ./last_name ]
+then
+   rm -f ./last_name
+fi
+if [ $store = "yes" ]
+then
+   if [ $comp = "solar" ]
+   then
+      name=${mwd}_${twd}_${mdotsym}_${nmod}
+      if [ ! -d LOGS_$name ]
+      then
+         mkdir LOGS_$name
+         cp LOGS/* LOGS_$name
+      else
+         rm -f LOGS_$name/*
+         cp LOGS/* LOGS_$name
+      fi
+      if [ ! -d co_nova_hdf_$name ]
+      then
+         mkdir co_nova_hdf_$name
+         cp co_nova_hdf/* co_nova_hdf_$name
+      else
+         rm -f co_nova_hdf_$name/*
+         cp co_nova_hdf/* co_nova_hdf_$name
+      fi
+      if [ ! -d png_main_$name ]
+      then
+         mkdir png_main_$name
+         cp png_main/* png_main_$name
+      else
+         rm -f png_main_$name/*
+         cp png_main/* png_main_$name
+      fi
+   elif [ $comp = "mixed" -o $comp = "ovsh" ]
+   then
+      name=${mwd}_${twd}_${mdotsym}_${nmod}_${comp}
+      if [ ! -d LOGS_$name ]
+      then
+         mkdir LOGS_$name
+         cp LOGS/* LOGS_$name
+      else
+         rm -f LOGS_$name/*
+         cp LOGS/* LOGS_$name
+      fi
+      if [ ! -d co_nova_hdf_$name ]
+      then
+         mkdir co_nova_hdf_$name
+         cp co_nova_hdf/* co_nova_hdf_$name
+      else
+         rm -f co_nova_hdf_$name/*
+         cp co_nova_hdf/* co_nova_hdf_$name
+      fi
+      if [ ! -d png_main_$name ]
+      then
+         mkdir png_main_$name
+         cp png_main/* png_main_$name
+      else
+         rm -f png_main_$name/*
+         cp png_main/* png_main_$name
+      fi
+   else
+      die "Parameter $comp has been defined incorrectly. Ending..."
+   fi
+else
+   echo "MESA has finished the computations."
+fi
+if [ $store = "yes" ]
+then
+   echo $name > ./last_name
+fi
+

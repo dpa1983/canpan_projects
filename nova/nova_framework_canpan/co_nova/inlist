@@ -1,0 +1,28 @@
+
+&star_job
+
+      mesa_dir = ''
+
+      read_extra_star_job_inlist1 = .true.
+      extra_star_job_inlist1_name = 'inlist_co_nova'
+
+/ ! end of star_job namelist
+
+
+&controls
+
+      read_extra_controls_inlist1 = .true.
+      extra_controls_inlist1_name = 'inlist_co_nova'
+
+      use_other_mixing = .true.
+
+/ ! end of controls namelist
+
+
+&pgstar
+
+      read_extra_pgstar_inlist1 = .true.
+      extra_pgstar_inlist1_name = 'inlist_co_nova_pgstar'
+    ! extra_pgstar_inlist1_name = 'inlist_co_nova_pgstar_2'
+
+/ ! end of pgstar namelist

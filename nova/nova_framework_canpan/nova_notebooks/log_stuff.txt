@@ -1,0 +1,72 @@
+103 in profiles.index file ...
+Found and load nearest profile for cycle 1
+reading profile/user/scratch14_wendi3/dpa/nova_framework_astrohub/ne_nova/LOGS//profile1.data ...
+ reading ...5% reading ...10% reading ...15% reading ...20% reading ...25% reading ...30% reading ...35% reading ...40% reading ...45% reading ...50% reading ...55% reading ...60% reading ...65% reading ...70% reading ...75% reading ...80% reading ...85% reading ...90% reading ...95% reading ...100% 
+
+Closing profile tool ...
+103 in profiles.index file ...
+Found and load nearest profile for cycle 60
+reading profile/user/scratch14_wendi3/dpa/nova_framework_astrohub/ne_nova/LOGS//profile5.data ...
+ reading ...5% reading ...10% reading ...15% reading ...20% reading ...25% reading ...30% reading ...35% reading ...40% reading ...45% reading ...50% reading ...55% reading ...60% reading ...65% reading ...70% reading ...75% reading ...80% reading ...85% reading ...90% reading ...95% reading ...100% 
+
+Closing profile tool ...
+103 in profiles.index file ...
+Found and load nearest profile for cycle 140
+reading profile/user/scratch14_wendi3/dpa/nova_framework_astrohub/ne_nova/LOGS//profile9.data ...
+ reading ...5% reading ...10% reading ...15% reading ...20% reading ...25% reading ...30% reading ...35% reading ...40% reading ...45% reading ...50% reading ...55% reading ...60% reading ...65% reading ...70% reading ...75% reading ...80% reading ...85% reading ...90% reading ...95% reading ...100% 
+
+Closing profile tool ...
+103 in profiles.index file ...
+Found and load nearest profile for cycle 220
+reading profile/user/scratch14_wendi3/dpa/nova_framework_astrohub/ne_nova/LOGS//profile13.data ...
+ reading ...5% reading ...10% reading ...15% reading ...20% reading ...25% reading ...30% reading ...35% reading ...40% reading ...45% reading ...50% reading ...55% reading ...60% reading ...65% reading ...70% reading ...75% reading ...80% reading ...85% reading ...90% reading ...95% reading ...100% 
+
+Closing profile tool ...
+103 in profiles.index file ...
+Found and load nearest profile for cycle 300
+reading profile/user/scratch14_wendi3/dpa/nova_framework_astrohub/ne_nova/LOGS//profile17.data ...
+ reading ...5% reading ...10% reading ...15% reading ...20% reading ...25% reading ...30% reading ...35% reading ...40% reading ...45% reading ...50% reading ...55% reading ...60% reading ...65% reading ...70% reading ...75% reading ...80% reading ...85% reading ...90% reading ...95% reading ...100% 
+
+Closing profile tool ...
+103 in profiles.index file ...
+Found and load nearest profile for cycle 380
+reading profile/user/scratch14_wendi3/dpa/nova_framework_astrohub/ne_nova/LOGS//profile21.data ...
+ reading ...5% reading ...10% reading ...15% reading ...20% reading ...25% reading ...30% reading ...35% reading ...40% reading ...45% reading ...50% reading ...55% reading ...60% reading ...65% reading ...70% reading ...75% reading ...80% reading ...85% reading ...90% reading ...95% reading ...100% 
+
+Closing profile tool ...
+103 in profiles.index file ...
+Found and load nearest profile for cycle 460
+reading profile/user/scratch14_wendi3/dpa/nova_framework_astrohub/ne_nova/LOGS//profile25.data ...
+ reading ...5% reading ...10% reading ...15% reading ...20% reading ...25% reading ...30% reading ...35% reading ...40% reading ...45% reading ...50% reading ...55% reading ...60% reading ...65% reading ...70% reading ...75% reading ...80% reading ...85% reading ...90% reading ...95% reading ...100% 
+
+Closing profile tool ...
+103 in profiles.index file ...
+Found and load nearest profile for cycle 620
+reading profile/user/scratch14_wendi3/dpa/nova_framework_astrohub/ne_nova/LOGS//profile33.data ...
+ reading ...5% reading ...10% reading ...15% reading ...20% reading ...25% reading ...30% reading ...35% reading ...40% reading ...45% reading ...50% reading ...55% reading ...60% reading ...65% reading ...70% reading ...75% reading ...80% reading ...85% reading ...90% reading ...95% reading ...100% 
+
+Closing profile tool ...
+103 in profiles.index file ...
+Found and load nearest profile for cycle 940
+reading profile/user/scratch14_wendi3/dpa/nova_framework_astrohub/ne_nova/LOGS//profile49.data ...
+ reading ...5% reading ...10% reading ...15% reading ...20% reading ...25% reading ...30% reading ...35% reading ...40% reading ...45% reading ...50% reading ...55% reading ...60% reading ...65% reading ...70% reading ...75% reading ...80% reading ...85% reading ...90% reading ...95% reading ...100% 
+
+Closing profile tool ...
+103 in profiles.index file ...
+Found and load nearest profile for cycle 1260
+reading profile/user/scratch14_wendi3/dpa/nova_framework_astrohub/ne_nova/LOGS//profile65.data ...
+ reading ...5% reading ...10% reading ...15% reading ...20% reading ...25% reading ...30% reading ...35% reading ...40% reading ...45% reading ...50% reading ...55% reading ...60% reading ...65% reading ...70% reading ...75% reading ...80% reading ...85% reading ...90% reading ...95% reading ...100% 
+
+Closing profile tool ...
+103 in profiles.index file ...
+Found and load nearest profile for cycle 1580
+reading profile/user/scratch14_wendi3/dpa/nova_framework_astrohub/ne_nova/LOGS//profile81.data ...
+ reading ...5% reading ...10% reading ...15% reading ...20% reading ...25% reading ...30% reading ...35% reading ...40% reading ...45% reading ...50% reading ...55% reading ...60% reading ...65% reading ...70% reading ...75% reading ...80% reading ...85% reading ...90% reading ...95% reading ...100% 
+
+Closing profile tool ...
+103 in profiles.index file ...
+Found and load nearest profile for cycle 1900
+reading profile/user/scratch14_wendi3/dpa/nova_framework_astrohub/ne_nova/LOGS//profile97.data ...
+ reading ...5% reading ...10% reading ...15% reading ...20% reading ...25% reading ...30% reading ...35% reading ...40% reading ...45% reading ...50% reading ...55% reading ...60% reading ...65% reading ...70% reading ...75% reading ...80% reading ...85% reading ...90% reading ...95% reading ...100% 
+
+Closing profile tool ...

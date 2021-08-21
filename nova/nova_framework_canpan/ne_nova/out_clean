@@ -1,0 +1,20 @@
+if [ -d LOGS ]
+then
+  cd LOGS; rm -f *; cd ..
+fi
+if [ -d photos ]
+then
+  cd photos; rm -f *; cd ..
+fi
+if [ -d png_main ]
+then
+  cd png_main; rm -f *; cd ..
+fi
+if [ -d png_abund ]
+then
+   cd png_abund; rm -f *; cd ..
+fi
+if [ -d ne_nova_hdf ]
+then
+  cd ne_nova_hdf; rm -f *; cd ..
+fi

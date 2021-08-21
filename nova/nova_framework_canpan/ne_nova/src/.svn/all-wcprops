@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svnroot/mesa/!svn/ver/2897/trunk/star/test_suite/wd2/src
+END
+run_star_extras.f
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnroot/mesa/!svn/ver/2897/trunk/star/test_suite/wd2/src/run_star_extras.f
+END
+run.f
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/mesa/!svn/ver/2536/trunk/star/test_suite/wd2/src/run.f
+END

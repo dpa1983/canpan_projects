@@ -1,0 +1,12 @@
+#
+#  make a movie using *.png files in png_main
+#
+clear                      
+echo "Wait..."
+cd $HOME/nova_framework/ne_nova/png_main
+mogrify -format jpg -quality 90 *.png
+mencoder mf://*.jpg -mf fps=30:type=jpg -ovc lavc -lavcopts vcodec=mpeg4 -oac copy -o output.avi -ffourcc DX50
+mv output.avi output.mpg
+cd $HOME/nova_framework/ne_nova
+clear                      
+echo "The movie is ready (you can launch it with the command ./show_movie)."

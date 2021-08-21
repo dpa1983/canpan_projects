@@ -1,0 +1,8 @@
+#
+#  show movie from png_main
+#
+clear
+cd $HOME/nova_framework/co_nova/png_main
+totem output.mpg
+cd $HOME/nova_framework/co_nova
+clear

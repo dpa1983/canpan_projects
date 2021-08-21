@@ -1,0 +1,5 @@
+&sehead
+        codev='/user/scratch14_wendi3/dpa/nova_framework_astrohub/co_nova'
+        modname='co_nova_hdf'
+	prefix='co_nova_hdf'
+/
