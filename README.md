@@ -7,7 +7,7 @@ To run stellar evolution simulations with the ``MESA`` code revision 5329 on ``a
 * ``export MESA_DIR=/user/mesa/mesa_5329``
 * ``export OMP_NUM_THREADS=8``
 
-After that, try to first execute the command ``./mk`` to see that everything is set up correctly, otherwise there will be some error messages. **Make sure** that the mesa work directory has the sub-directories ``LOGS``, ``photos``, ``co_nova_hdf`` or ``ne_nova_hdf``, ``png_main``, and ``png_abund``. If not, make them, then run ``MESA`` with the command ``nice -n 19 ./rn``
+After that, try to first execute the command ``./mk`` to see that everything is set up correctly, otherwise there will be some error messages. **Make sure** that the mesa work directory has the sub-directories ``LOGS``, ``photos``, ``co_nova_hdf`` or ``ne_nova_hdf``, ``co_nova_plots`` or ``ne_nova_plots``, ``png_main``, and ``png_abund``. If not, make them, then run ``MESA`` with the command ``nice -n 19 ./rn``
 For nova evolution simulations, use the special script with desired nova model parameters, e.g. for ONe nova try to use 
 ``./run_mesa 1.3 30 X 2010``, where 1.3 is the ONe WD mass, 30 is its central temperature in MK, X is the symbol for the mass accretion rate $$2\times 10^{-10}\ M_\odot/\mathrm{yr}$$, and 2010 is the number of models to compute (for details, see ``README_nova.md`` file in the ``nova`` directory). 
 
