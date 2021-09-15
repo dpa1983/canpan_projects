@@ -11,7 +11,7 @@ After that, try to first execute the command ``./mk`` to see that everything is 
 For **nova evolution simulations**, use the special script with desired nova model parameters, e.g. for an ONe nova case try to use 
 ``./run_mesa 1.3 30 X 2010``, where 1.3 is the ONe WD mass, 30 is its central temperature in MK, X is the symbol coding the mass accretion rate $$2\times 10^{-10}\ M_\odot\mathrm{yr}^{-1}$$, and 2010 is the number of models to compute (for details, see ``README_nova.md`` file in the ``nova`` directory). 
 
-To simulate nova nucleosynthesis with a larger nuclear reaction network than in ``MESA``, run the NuGrid multi-zone post-processing nucleosynthesis code ``mppnp`` from a copy of the directory ``run_nova_canpan``. To do this on the server ``astrohub/outreach``, change the default path ``PCD=../CODE`` to ``PCD=/user/scratch14_outreach/Pavel/nuppn/frames/mppnp/CODE`` in the file ``Makefile`` in ``run_nova_canpan``. Then execute the commands
+To simulate nova nucleosynthesis with a larger nuclear reaction network than in ``MESA``, run the NuGrid multi-zone post-processing nucleosynthesis code ``mppnp`` from a copy of the directory ``run_nova_canpan``. To do this on the server ``astrohub/outreach``, first change the default path ``PCD=../CODE`` to ``PCD=/user/scratch14_outreach/Pavel/nuppn/frames/mppnp/CODE`` in the file ``Makefile`` in ``run_nova_canpan``. Then execute the commands
 
 * ``make distclean``, and
 * ``make``
