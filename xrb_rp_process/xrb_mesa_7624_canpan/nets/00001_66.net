@@ -1,0 +1,94 @@
+! 00001_66.net      66 species
+
+add_isos_and_reactions(
+!       iso    log10 max x
+       neut   ! newly added
+
+         h1   !   -0.14267
+         h2   ! newly added
+         h3   ! newly added
+
+        he3   !   -8.14670
+        he4   !   -0.53769
+
+        li7   ! newly added
+
+        be7   ! newly added
+        be8   ! newly added
+        be9   ! newly added
+
+         b9   ! newly added
+        b10   ! newly added
+        b11   ! newly added
+        b12   ! newly added
+
+        c10   ! newly added
+        c11   ! newly added
+        c12   !   -2.46318
+        c13   !   -3.32022
+        c14   ! newly added
+
+        n12   ! newly added
+        n13   !   -2.74752
+        n14   !   -2.20111
+        n15   !   -5.40260
+        n16   ! newly added
+
+        o13   ! newly added
+        o14   !   -3.74438
+        o15   !   -3.06243
+        o16   !   -2.02861
+        o17   !   -5.02537
+
+        f16   ! newly added
+        f17   !   -4.67231
+        f18   !   -5.17000
+        f19   !   -6.28346
+        f20   ! newly added
+
+       ne19   !   -9.74028
+       ne20   !   -2.67780
+       ne21   ! newly added
+       ne22   ! newly added
+
+       na20   ! newly added
+       na21   ! newly added
+       na22   ! newly added
+       na23   ! newly added
+
+       mg23   ! newly added
+       mg24   !   -3.09694
+       mg25   ! newly added
+       mg26   ! newly added
+
+       al27   ! newly added
+
+       si28   ! newly added
+
+        s32   ! newly added
+
+       cr52   ! newly added
+       cr53   ! newly added
+
+       mn53   ! newly added
+       mn54   ! newly added
+       mn55   ! newly added
+       mn56   ! newly added
+
+       fe55   ! newly added
+       fe56   !    0.00000
+       fe57   ! newly added
+
+       co56   ! newly added
+       co57   ! newly added
+       co58   ! newly added
+       co59   ! newly added
+
+       ni59   ! newly added
+       ni60   ! newly added
+
+       cu63   ! newly added
+
+       zn64   ! newly added
+)
+

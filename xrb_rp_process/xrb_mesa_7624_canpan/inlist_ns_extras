@@ -1,0 +1,65 @@
+&controls
+      varcontrol_target = 1d-2
+      mesh_delta_coeff = 2.0
+      
+      mesh_min_dlnR = 1d-9
+      merge_if_dlnR_too_small = .true.
+      
+       use_GR_factors = .true.
+       Pextra_factor=2
+
+        min_T_for_acceleration_limited_conv_velocity = 0.0
+
+        okay_to_reduce_gradT_excess = .true.
+        super_eddington_wind_eta = 1
+
+        mixing_length_alpha = 1.5
+        MLT_option = 'Henyey'
+
+        use_Ledoux_criterion = .true.
+
+        alpha_semiconvection = 0.1
+        thermohaline_coeff = 2
+        thermohaline_option = 'Kippenhahn'
+
+
+        dX_nuc_drop_limit=7.5d-2
+        dX_nuc_drop_limit_at_high_T=5d-3
+        dX_nuc_drop_min_X_limit=7.5d-2
+        dX_nuc_drop_max_A_limit=52
+
+		max_timestep_factor = 0.d0
+		delta_lgT_cntr_limit = 0.05
+		delta_lgTeff_limit = 0.05
+		delta_lgL_He_limit = 0.1	
+	
+
+        mesh_dlog_pp_dlogP_extra = 2
+        mesh_dlog_cno_dlogP_extra = 2
+
+        mesh_dlog_3alf_dlogP_extra = 2
+        mesh_dlog_burn_c_dlogP_extra = 2
+        mesh_dlog_burn_n_dlogP_extra = 2
+        mesh_dlog_burn_o_dlogP_extra = 2
+
+        mesh_dlog_burn_ne_dlogP_extra = 2
+        mesh_dlog_burn_na_dlogP_extra = 2
+        mesh_dlog_burn_mg_dlogP_extra = 2
+
+        mesh_dlog_cc_dlogP_extra = 2
+        mesh_dlog_co_dlogP_extra = 2
+        mesh_dlog_oo_dlogP_extra = 2
+
+        mesh_dlog_burn_si_dlogP_extra = 2
+        mesh_dlog_burn_s_dlogP_extra = 2
+        mesh_dlog_burn_ar_dlogP_extra = 2
+        mesh_dlog_burn_ca_dlogP_extra = 2
+        mesh_dlog_burn_ti_dlogP_extra = 2
+        mesh_dlog_burn_cr_dlogP_extra = 2
+        mesh_dlog_burn_fe_dlogP_extra = 2
+
+        mesh_dlog_pnhe4_dlogP_extra = 2
+        mesh_dlog_other_dlogP_extra = 2
+        mesh_dlog_photo_dlogP_extra = 2
+
+/

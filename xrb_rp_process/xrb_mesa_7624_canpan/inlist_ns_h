@@ -1,0 +1,160 @@
+! inlist_ns_h
+
+
+&star_job
+      show_log_description_at_start = .false.
+      
+      load_saved_model = .true.
+      saved_model_name = 'ns_1.4M_h_test.mod'
+
+      save_model_when_terminate = .true.
+      save_model_filename = 'final.mod'
+      
+      write_profile_when_terminate = .true.
+      filename_for_profile_when_terminate = 'final_profile.data'
+
+      enable_adaptive_network = .true.
+      min_x_for_keep = 1d-4
+      min_x_for_n = 1d-3
+      min_x_for_add = 1d-3
+      max_Z_for_add = 52
+      max_N_for_add = 55
+      max_A_for_add = 107
+
+    ! change_initial_net = .true.      
+    ! new_net_name = 'rp.net'
+    ! new_net_name = 'cno_extras_plus_fe56.net'
+      
+      set_rate_3a = 'FL87' ! Fushiki and Lamb, Apj, 317, 368-388, 1987
+      set_rate_1212 = 'G05' ! Gasques, et al. Phys Review C, 72, 025806, 2005      
+
+      kappa_file_prefix = 'gs98'
+
+      relax_initial_L_center = .true.
+      new_L_center = 1.6d+34
+      
+
+      pgstar_flag = .true.
+
+
+
+/ ! end of star_job namelist
+
+&controls
+
+      ! check for retries and backups as part of test_suite
+      ! you can/should delete this for use outside of test_suite
+         max_number_backups = 200
+         max_number_retries = 600
+
+      max_model_number = 4500
+
+
+      max_abar_for_burning = 55
+      
+      initial_mass = 1.4
+      initial_z = 0.02d0
+      
+      use_Type2_opacities = .true.
+      Zbase = 0.02d0
+
+      photostep = 50
+      profile_interval = 100
+      history_interval = 10
+      terminal_cnt = 10
+      write_header_frequency = 10
+      
+      min_timestep_limit = 1d-9
+      gamma_center_limit = 1d99
+      
+      varcontrol_target = 1d-3
+      !mesh_delta_coeff = 1.5
+      
+      mesh_min_dlnR = 1d-9
+      merge_if_dlnR_too_small = .true.
+      
+      which_atm_option = 'grey_and_kap'
+      
+      varcontrol_target = 1d-3 
+      
+      RGB_wind_scheme = ''
+      AGB_wind_scheme = ''
+      RGB_to_AGB_wind_switch = 1d-4
+      Reimers_wind_eta = 0.5d0  
+      Blocker_wind_eta = 0.1d0 
+      
+      use_GR_factors = .true.
+         
+      !mass_change_full_on_dt = 1d-4 ! (seconds)
+      !mass_change_full_off_dt = 1d-6 ! (seconds)
+
+      
+      accrete_same_as_surface = .false. 
+      accrete_given_mass_fractions = .false. 
+      accretion_h1 = 0.72 ! mass fraction
+      accretion_h2 = 0 ! if no h2 in current net, then this is automatically added to h1
+      accretion_he3 = 0
+      accretion_he4 = 0.26
+      accretion_zfracs = 3 ! one of the identifiers for different Z fractions from chem_def
+
+      mass_change = 3d-9 ! 1.7d-11  ! rate of accretion (Msun/year)      
+      max_years_for_timestep = 1d-4
+
+      ! FOR DEBUGGING
+
+      !report_hydro_solver_progress = .true. ! set true to see info about newton iterations
+      !report_ierr = .true. ! if true, produce terminal output when have some internal error
+      !hydro_show_correction_info = .true.
+      
+      !max_years_for_timestep = 3.67628942044319d-05
+
+      !report_why_dt_limits = .true.
+      !report_all_dt_limits = .true.
+      
+      !show_mesh_changes = .true.
+      !mesh_dump_call_number = 5189
+      !okay_to_remesh = .false.
+      
+      !trace_evolve = .true.
+            
+
+      ! hydro debugging
+      !hydro_check_everything = .true.
+      !hydro_inspectB_flag = .true.
+      
+      !hydro_numerical_jacobian = .true.
+      !hydro_save_numjac_plot_data = .true.
+      !small_mtx_decsol = 'lapack'
+      !large_mtx_decsol = 'lapack'
+      !hydro_dump_call_number = 195
+
+      !trace_newton_bcyclic_solve_input = .true. ! input is "B" j k iter B(j,k)
+      !trace_newton_bcyclic_solve_output = .true. ! output is "X" j k iter X(j,k)
+      
+      !trace_newton_bcyclic_steplo = 1 ! 1st model number to trace
+      !trace_newton_bcyclic_stephi = 1 ! last model number to trace
+      
+      !trace_newton_bcyclic_iterlo = 2 ! 1st newton iter to trace
+      !trace_newton_bcyclic_iterhi = 2 ! last newton iter to trace
+      
+      !trace_newton_bcyclic_nzlo = 1 ! 1st cell to trace
+      !trace_newton_bcyclic_nzhi = 10000 ! last cell to trace; if < 0, then use nz as nzhi
+      
+      !trace_newton_bcyclic_jlo = 1 ! 1st var to trace
+      !trace_newton_bcyclic_jhi = 100 ! last var to trace; if < 0, then use nvar as jhi
+      
+      !trace_k = 0
+
+
+/ ! end of controls namelist
+
+
+
+
+
+
+&pgstar
+         
+      
+
+/ ! end of pgstar namelist
