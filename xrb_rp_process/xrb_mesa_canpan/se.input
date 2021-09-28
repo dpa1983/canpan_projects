@@ -1,0 +1,5 @@
+&sehead
+        codev='mesa_7624'
+        modname='ns_star_hdf'
+	prefix='ns_star_hdf'
+/

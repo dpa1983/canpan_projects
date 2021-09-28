@@ -1,0 +1,21 @@
+! inlist_cluster
+
+
+&star_job
+
+   saved_model_name ='ns_relax_LbaseF.mod'
+   ! R_ns = 1.2km, Q_b = 0.1MeV/u, dM/dt = 0.1700*(dM/dt)_Edd
+   
+   num_special_rate_factors =0
+   reaction_for_special_factor(:)='r_o15_ag_ne19'
+   special_rate_factor(:)=1.
+
+/ ! end of star_job namelist
+
+&controls
+   
+   accretion_h1 = 0.75 
+   accretion_he4 = 0.23
+   mass_change = 2.98d-9
+
+/ ! end of controls namelist
