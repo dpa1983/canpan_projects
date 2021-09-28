@@ -48,3 +48,7 @@ To run ``MESA`` simulations on ``astrohub/CSA`` choose ``MESA`` latest lab, go t
 
 * ``export MESA_DIR=/user/scratch14_ppmstar/mesa/mesa_5329``
 * ``export OMP_NUM_THREADS=4``
+
+For ``MESA`` computations on ``astrohub/CSA`` that need to use the revision 7624, execute
+
+``export MESA_DIR=/user/scratch14_outreach/mesa/mesa_7624``
