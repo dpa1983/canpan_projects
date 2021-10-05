@@ -1,0 +1,7 @@
+rm -f *DAT
+rm -f x-time.dat
+rm -f *png
+rm -f *~
+rm -f OUT fort.6
+rm -f selem*
+#rm -f net*txt
