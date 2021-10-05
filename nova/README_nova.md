@@ -9,7 +9,7 @@ In the main ``README.md`` file, read how to make ``MESA`` and ``NuGrid`` codes r
 First, as a test, try to do in your mesa work directory ``ne_nova`` a relatively fast (it still may take an hour) ``MESA`` ONe nova evolution computation with the command ``./run_mesa 1.3 30 X 2010``, where 1.3 is the ONe WD mass, 30 is its central temperature in MK, X is the symbol coding the mass accretion rate $$2\times 10^{-10}\ M_\odot\mathrm{yr}^{-1}$$, and 2010 is the number of models to compute.
 When the script will ask you a few questions, skip (by answering *no*) the option of taking into account convective boundary mixing, select (by answering *yes*) the option of using a mixture of equal amounts of WD and solar-composition materials, and skip the option of saving results in a separate directory. When the computation starts, use the notebook ``nova_mesa.ipynb`` from the directory ``/nova_framework_canpan/nova_notebooks`` to track the progress of the computation.
 
-For available combinations of the WD mass and central temperature, look in the CO and ONe WD model directories ``co_wd_models`` and ``ne_wd_models``. Note that not all of these combinations (WD models)  can be used to produce a smooth, converged and not too long-lasting ``MESA`` nova evolution simulation. Try different combinations to see which ones work well. The symbols **A, B, C, X, Z** taken by the ``run_mesa`` script code the mass accretion rates $$10^{-10}$$, $$10^{-11}$$, $$10^{-9}$$, $$2\times 10^{-10}$$, and $$6\times 10^{-8}\ M_\odot\mathrm{yr}^{-1}$$, respectively. The script will check if a desired combination of nova model parameters is available.
+For available combinations of the WD mass and central temperature, look in the CO and ONe WD model directories ``co_wd_models`` and ``ne_wd_models``. Note that not all of these combinations (WD models)  can be used to produce a smooth, converged and not too long-lasting ``MESA`` nova evolution simulation. Try different combinations, e.g. those used in this [paper](https://ui.adsabs.harvard.edu/abs/2014MNRAS.442.2058D/abstract), to see which ones work well. The symbols **A, B, C, X, Z** taken by the ``run_mesa`` script code the mass accretion rates $$10^{-10}$$, $$10^{-11}$$, $$10^{-9}$$, $$2\times 10^{-10}$$, and $$6\times 10^{-8}\ M_\odot\mathrm{yr}^{-1}$$, respectively. The script will check if a desired combination of nova model parameters is available.
 
 ``MESA`` nova simulations save stellar structure data files for a following post-processing with the ``mppnp`` code in blocks of 1000 models in the directory ``co_nova_hdf`` or ``ne_nova_hdf``. Therefore, always run these simulations for a number of models slightly exceeding, say by 10, a multiple of 1000, i.e. 1010 (this is probably a minimum number), 2010, 3010, etc. At the end of a ``MESA`` nova evolution simulation, go to the directory ``co_nova_hdf`` or ``ne_nova_hdf`` and create there a file ``co_nova_hdf.idx`` or ``ne_nova_hdf.idx`` that contains an ordered list of all other files saved in this directory by ``MESA``, e.g. ``ne_nova_hdf.0000001.se.h5``, etc. These data will be used by the code ``mppnp``.
 
@@ -29,10 +29,19 @@ They should not report any errors.
 ``MESA`` and ``NuGrid`` ``mppnp`` CO and ONe nova computations can be done for different combinations of the initial WD mass, central temperature, and mass-accretion rate. Also, there are three ways to model mixing between the accreted H-rich and WD material: 
 
 1. no mixing, 
-2. convective boundary mixing (overshoot), and 
-3. using a WD pre-mixed composition for the accreted material. 
+2. using a WD pre-mixed composition for the accreted material, and 
+3. convective boundary mixing (overshoot).
 
-The first and second mixing options assume that the accreted material has a solar composition, while the third options uses a mixture (usually, of equal amounts) of the solar and WD compositions.
-The directories ``co_nova`` and ``ne_nova`` contain small fortran programs, such as ``co_wd_iniab.f`` and ``ne_wd_iniab_weiss.f``, that should be used to prepare necessary chemical composition files for both ``MESA`` and ``mppnp`` nova simulations (**for details, consult Pavel Denisenkov**).
+The first and third mixing options assume that the accreted material has a solar composition, while the second option uses a mixture (usually, of equal amounts) of the solar and WD compositions.
+
+For nova models, ``NuGrid`` multi-zone post-processing nucleosynthesis computations are done either with the parameter ``iabuini = 10`` for the first and second mixing cases or with ``iabuini = 20`` for the third mixing case. These values are provided in the file ``ppn_frame.input``. In the first two cases, only one file with chemical composition of the accreted material, ``iniab_ne_nova_mwd_tc_mixed.dat_cut``, has to be prepared and placed in ``run_nova_canpan`` directory, while in the last case a file with the WD chemical composition, ``ne_wd_mwd_tc_mixed.ppn_cut``, has to be added there. 
+
+For the second mixing case, a file with chemical composition representing a mixture of CO WD and solar-composition materials, ``co_nova_mwd_mixed_comp``, has also to be created in the directory ``co_nova`` for ``MESA`` nova evolution simulations. 
+In the names of these files, ``mwd`` is the WD mass, and ``tc`` is its central temperature.
+
+**Note** that for CO nova models with the CO WD masses 1.0, 1.15, and 1.2, as well as for the ONe nova models with the ONe WD masses 1.15 and 1.3
+the files ``co_nova_mwd_mixed_comp`` and ``ne_nova_mwd_mixed_comp`` are already present in the corresponding directories.
+
+If it is necessary, all three chemical composition files can be prepared with the small fortran programs, ``co_wd_iniab.f`` and ``ne_wd_iniab_weiss.f``, available in the directories ``co_nova`` and ``ne_nova``, respectively. In these programs you will only need to specify the name of a selected WD model, e.g. ``co_wd_1.15_12_mixed.mod``, and the fraction of WD material in the accreted envelope, e.g. ``fmix = 0.0`` or ``fmix = 0.5`` for the first and second mixing cases. The value of ``fmix = 1.0`` can be used to prepare a file with WD chemical composition for   
 
 **Note** that the ``mppnp`` nova code in the ``NuPPN`` branch ``nova_Cl34_isomer`` uses a list of 70 isotopes cut off at ``ni 64``.
