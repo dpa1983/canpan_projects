@@ -1,10 +1,10 @@
 # CaNPAN Nova project
 
-For CO and ONe nova evolution simulations, use the ``MESA`` revision 5329 **only** and your copies of the directories ``/nova_framework_canpan/co_nova`` and  ``/nova_framework_canpan/ne_nova`` from the ``CaNPAN_projects`` github repository as the corresponding mesa work directories.
+In the main ``README.md`` file, read how to make ``MESA`` and ``NuGrid`` codes run on ``astrohub``.
+
+For CO and ONe nova evolution simulations, use the ``MESA`` revision 5329 **only** and your copies of the directories ``/nova_framework_canpan/co_nova`` and  ``/nova_framework_canpan/ne_nova`` from the ``canpan_projects`` github repository as the corresponding mesa work directories.
 
 The files ``/co_nova/inlist_co_nova*.template`` all use the nova reaction network ``nova_ext.net``, while the larger network ``nova_weiss.net`` is used in the files ``/ne_nova/inlist_ne_nova*.template``, which usually leads to longer execution times for ``MESA`` ONe nova evolution runs. 
-
-In the main ``README.md`` file, read how to make ``MESA`` and ``NuGrid`` codes run on ``astrohub``.
 
 First, as a test, try to do in your mesa work directory ``ne_nova`` a relatively fast (it still may take an hour) ``MESA`` ONe nova evolution computation with the command ``./run_mesa 1.3 30 X 2010``, where 1.3 is the ONe WD mass, 30 is its central temperature in MK, X is the symbol coding the mass accretion rate $$2\times 10^{-10}\ M_\odot\mathrm{yr}^{-1}$$, and 2010 is the number of models to compute.
 When the script will ask you a few questions, skip (by answering *no*) the option of taking into account convective boundary mixing, select (by answering *yes*) the option of using a mixture of equal amounts of WD and solar-composition materials, and skip the option of saving results in a separate directory. When the computation starts, use the notebook ``nova_mesa.ipynb`` from the directory ``/nova_framework_canpan/nova_notebooks`` to track the progress of the computation.
@@ -25,7 +25,7 @@ On the outreach hub server the ``NuPPN`` branch ``nova_Cl34_isomer`` is already 
 * ``make distclean``, and
 * ``make``
 
-They should not report any errors. The same thing has to be done in the directory ``ppn_nova_canpan`` if you want to use the one-zone code ``ppn`` for nova post-processing as well.
+They should not report any errors. The same thing has to be done in the directory ``ppn_nova_canpan`` if you want to use the one-zone code ``ppn`` for nova model post-processing as well.
 
 ## Important technical details
 ``MESA`` and ``NuGrid`` ``mppnp`` CO and ONe nova computations can be done for different combinations of the initial WD mass, central temperature, and mass-accretion rate. Also, there are three ways to model mixing between the accreted H-rich and WD material: 
@@ -38,10 +38,12 @@ The first and third mixing options assume that the accreted material has a solar
 
 For nova models, ``NuGrid`` multi-zone post-processing nucleosynthesis computations are always done with the parameter ``iabuini = 20``, as specified in the file ``ppn_frame.input``. In all cases, both a file with chemical composition of the accreted material, ``iniab_ne_nova_mwd_tc_mixed.dat_cut``, and a file with the WD chemical composition, ``ne_wd_mwd_tc_mixed.ppn_cut``, have to be prepared and placed in the ``run_nova_canpan`` directory.
 
+``mppnp`` computations can be launched with the command ``nice -n 19 mpirun -np 4 ./mppnp.exe 1> log 2> err  &``. Before each start check that the file ``last_restart.our`` contains ``0 1`` in its first and only raw. The progress of ``mppnp`` computations can be seen with the command ``tail -n 100 summaryinfo.dat``. Its results are placed in the directories ``H5_out`` and ``H5_surf``.  
+
 **Note** that the ``mppnp`` code in the ``NuPPN`` branch ``nova_Cl34_isomer`` uses a list of 70 isotopes cut off at ``ni 64``.
 
 If you want to complement multi-zone post-processing with one-zone post-processing of a same nova model, an additional chemical composition file, ``initial_abundance.dat``, has to be created and placed in the directory ``ppn_nova_canpan``. It differs from its corresponding file ``iniab_ne_nova_mwd_tc_mixed.dat_cut`` by a larger number of isotopes, 286 instead of 70. A right ``trajectory.input`` file has also to be placed in the directory ``ppn_nova_canpan``.
-It can be prepared with the notebook ``nova_mppnp.ipynb`` using results of multi-zone post-processing.
+It can be prepared with the notebook ``nova_mppnp.ipynb`` using results of the corresponding multi-zone post-processing. ``ppn`` computations are launched with the command ``ppn.exe``.
 
 For nova multi-zone post-processing, a value of the minimum mass coordinate, ``xmrmin``, in the file ``ppn_frame.input`` has to be **negative**,
 with its absolute value providing a mass coordinate of the boundary separating WD and accreted envelope. This value can be estimated using the notebook ``nova_mesa.ipynb``.

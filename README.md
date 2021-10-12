@@ -4,13 +4,13 @@
 
 [https://github.com/dpa1983/canpan_projects.git](https://github.com/dpa1983/canpan_projects.git) is a ``github`` public repository with tutorials, Python 3 Jupyter notebooks and other files that are being developed for CaNPAN projects. These projects may require running both [MESA](http://mesa.sourceforge.net) stellar evolution simulations and [NuGrid](https://nugrid.github.io) one- or multi-zone post-processing nucleosynthesis computations. For some projects conducting Monte Carlo sensitivity and uncertainty studies for selected reaction rates may also be necessary.
 
-Here are **basic instructions** on how to get started using ``CaNPAN_projects`` tools on the NuGrid WENDI Astrohub *Outreach* hub:
+Here are **basic instructions** on how to get started using ``canpan_projects`` tools on the NuGrid WENDI Astrohub *Outreach* hub:
 
 1. Preferably, use the [Google Chrome](https://www.google.com/intl/en_ca/chrome/) internet browser.
 2. If you have not done this before, go to the site [github.com](http://github.com) and register there for free, e.g. as a student or a teacher.
 3. Go to [Astrohub Gateway](https://astrohub.uvic.ca) that offers a **Public & Outreach hub** (click on the *grey hub* there). It can be used by anyone with authentication via GitHub user name, with some restrictions applied. Spawn (by clicking on the *orange bar*) the Jupyter Lab Application: *MESAHub: Run and analyse MESA/NuGrid simulations*. Then, in the Jupyter Lab Launcher window click *Terminal*.
 4. In an opened linux terminal window, go to the directory ``/user/scratch14_outreach``, make there a directory with your name and go to it.
-5. Inside the new directory ``your_name`` execute the following command: ``git clone https://github.com/dpa1983/canpan_projects.git``. It will clone the github repository ``CaNPAN_projects`` in your directory.
+5. Inside the new directory ``your_name`` execute the following command: ``git clone https://github.com/dpa1983/canpan_projects.git``. It will clone the github repository ``canpan_projects`` in your directory.
 
 ## Running MESA and NuGrid codes on astrohub 
 
