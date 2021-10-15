@@ -33,7 +33,7 @@ To simulate nova nucleosynthesis with a larger nuclear reaction network than in 
 
 They should not report any errors. For further details, see the ``README_nova.md`` file in the ``nova`` directory. The same things have to be done also in the directory ``ppn_nova_canpan``.
 
-For one-zone computations of nucleosynthesis in the ``rp-process`` during Type-I X-ray bursts on an accreting neutron star use the path ``PCD=/user/scratch14_outreach/Pavel/nuppn_xrb/frames/mppnp/CODE`` in the file ``Makefile`` in the directory ``run_xrb_canpan``.
+For one-zone computations of nucleosynthesis in the ``rp-process`` during Type-I X-ray bursts on an accreting neutron star use the path ``PCD=/user/scratch14_outreach/Pavel/nuppn_xrb/frames/mppnp/CODE`` in the file ``Makefile`` in the directory ``ppn_xrb_canpan``.
 
 ### Running MESA on PPMstar hub server
 
