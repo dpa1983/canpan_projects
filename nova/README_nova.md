@@ -18,14 +18,17 @@ At the end of a ``MESA`` nova evolution simulation, go to the directory ``co_nov
 To do post-processing nucleosynthesis computations with the ``NuGrid`` multi-zone code ``mppnp`` for finished ``MESA`` nova evolution runs use the ``NuPPN`` branch ``nova_Cl34_isomer`` that includes the treatment of Cl-34 isomers as described in this [paper](https://ui.adsabs.harvard.edu/abs/2020PhRvC.102b5801R/abstract). 
 It may also be necessary to comment ``stop`` operator following the command ``write(*,*)'careful at the diffusion subroutine! '`` in the fortran code ``/nuppn/frames/mppnp/CODE/mppnp.f.``
 
-When using the one-zone and multi-zone ``NuGrid`` codes ``ppn`` and ``mppnp``, always check first that in the directory ``nuppn/physics/phys08/CODE`` the code ``ppn_physics.F`` has opening and closing parentheses for the entire sum of various terms contributing to the rate of the reaction ``N13(P,G)O14``.
+When using the one-zone and multi-zone ``NuGrid`` codes ``ppn`` and ``mppnp``, always check first that in the directory ``nuppn/physics/phys08/CODE`` the code ``ppn_physics.F`` has opening and closing parentheses for the entire sum of various terms contributing to the rate of the reaction ``N13(P,G)O14``. Also,
+check that the parameter ``IPPIV`` in this code is assigned the value 1, rather than 0. 
 
-On the outreach hub server the ``NuPPN`` branch ``nova_Cl34_isomer`` is already installed and tested, so that you can ignore the above two comments. To use it, first change the default path ``PCD=../CODE`` to ``PCD=/user/scratch14_outreach/Pavel/nuppn/frames/mppnp/CODE`` in the file ``Makefile`` in your copy of the directory ``run_nova_canpan``. Then execute the commands
+On the outreach hub server the ``NuPPN`` branch ``nova_Cl34_isomer`` is already installed and tested, so that you can ignore the above three comments. To use it, first change the default path ``PCD=../CODE`` to ``PCD=/user/scratch14_outreach/Pavel/nuppn_nova/frames/mppnp/CODE`` in the file ``Makefile`` in your copy of the directory ``run_nova_canpan``. Then execute the commands
 
 * ``make distclean``, and
 * ``make``
 
 They should not report any errors. The same thing has to be done in the directory ``ppn_nova_canpan`` if you want to use the one-zone code ``ppn`` for nova model post-processing as well.
+
+Most other NuGrid computations, e.g. one-zone simulations of nucleosynthesis in the ``rp-process`` occurring during X-ray bursts on an accreting neutron star, can be done using the ``NuPPN`` ``master`` branch the path to which is ``PCD=/user/scratch14_outreach/Pavel/nuppn_xrb/frames/mppnp/CODE``. This path has to be provided in the file ``Makefile`` in the corresponding ``mppnp`` and ``ppn`` run directories.
 
 ## Important technical details
 ``MESA`` and ``NuGrid`` ``mppnp`` CO and ONe nova computations can be done for different combinations of the initial WD mass, central temperature, and mass-accretion rate. Also, there are three ways to model mixing between the accreted H-rich and WD material: 
