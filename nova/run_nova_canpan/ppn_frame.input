@@ -9,11 +9,9 @@
 	iabuini = 20    ! initialisation
     	iolevel = 1     ! how much output do you want, >4 is for debugging
 
-      ! ini_file_name = '/user/scratch14_wendi3/dpa/nuppn/frames/mppnp/RUN_NOVA/iniab_co_nova_1.15_12_mixed.dat_cut'
-        ini_file_name = '/user/scratch14_wendi3/dpa/nuppn/frames/mppnp/RUN_NOVA/iniab_ne_nova_1.3_30_mixed.dat_cut'
+        ini_file_name = 'iniab_ne_nova_1.3_30_mixed.dat_cut' ! considered if iabuini=20
 
-      ! ini_file_name2 = '/user/scratch14_wendi3/dpa/nuppn/frames/mppnp/RUN_NOVA/co_wd_1.15_12_mixed.ppn_cut' ! considered if iabuini=20
-        ini_file_name2 = '/user/scratch14_wendi3/dpa/nuppn/frames/mppnp/RUN_NOVA/ne_wd_1.3_30_mixed.ppn_cut' ! considered if iabuini=20
+        ini_file_name2 = 'ne_wd_1.3_30_mixed.ppn_cut' ! considered if iabuini=20
 
 	t9threshold = 0.008
 	ythreshold  = 1.d-99	
@@ -37,9 +35,9 @@
 	xmrmax = 2.0    ! max mass coordinate
 
         code_source = 'MES' ! which stellar code was used ? 
-      ! datdir = '/user/scratch14_wendi3/dpa/nova_framework_astrohub/co_nova/co_nova_hdf'
+      ! datdir = '/user/scratch14_outreach/student_test/canpan_projects/nova/nova_framework_canpan/co_nova/co_nova_hdf'
       ! prefix = 'co_nova_hdf'
-        datdir = '/user/scratch14_wendi3/dpa/nova_framework_astrohub/ne_nova/ne_nova_hdf'
+        datdir = '/user/scratch14_outreach/student_test/canpan_projects/nova/nova_framework_canpan/ne_nova/ne_nova_hdf'
         prefix = 'ne_nova_hdf'
 
 	trestart = 1.5   ! write restart file every trestart hours 
