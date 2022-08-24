@@ -8,9 +8,10 @@ Here are **basic instructions** on how to get started using ``canpan_projects`` 
 
 1. Preferably, use the [Google Chrome](https://www.google.com/intl/en_ca/chrome/) internet browser.
 2. If you have not done this before, go to the site [github.com](http://github.com) and register there for free, e.g. as a student or a teacher.
-3. Go to [Astrohub Gateway](https://astrohub.uvic.ca) that offers an access to  **NuGrid WENDI hub** (click on the *red hub* there). It can be used **only by NuGrid members** (all others can access **TINA hub** that makes it possible to use ``canpan_projects`` tools for beginners). Spawn (by clicking on the *orange bar*) the Jupyter Lab Application: *MESAHub v1.2.6*. Then, in the Jupyter Lab Launcher window click *Terminal*.
-4. In an opened linux terminal window, go to the directory ``/user/scratch14_outreach``, make there a directory with your name and go to it.
-5. Inside the new directory ``your_name`` execute the following command: ``git clone https://github.com/dpa1983/canpan_projects.git``. It will clone the github repository ``canpan_projects`` in your directory.
+3. Send your github IDs to the CaNPAN computational coordinator to get an access to ``Astrohub`` web servers.
+4. Go to [Astrohub Gateway](https://astrohub.uvic.ca) that offers an access to  **NuGrid WENDI hub** (click on the *red hub* there). It can be used **only by NuGrid members** (all others can access **TINA hub** that makes it possible to use ``canpan_projects`` tools for beginners). Spawn (by clicking on the *orange bar*) the Jupyter Lab Application: *MESAHub v1.2.6*. Then, in the Jupyter Lab Launcher window click *Terminal*.
+5. In an opened linux terminal window, go to the directory ``/user/scratch14_outreach``, make there a directory with your name and go to it.
+6. Inside the new directory ``your_name`` execute the following command: ``git clone https://github.com/dpa1983/canpan_projects.git``. It will clone the github repository ``canpan_projects`` in your directory.
 
 ## Running MESA and NuGrid codes on astrohub 
 
