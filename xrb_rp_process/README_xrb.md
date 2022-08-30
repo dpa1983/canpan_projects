@@ -1,10 +1,17 @@
 # CaNPAN X-ray burst (XRB) project
 
-In the main ``README.md`` file, read how to make ``MESA`` and ``NuGrid`` codes run on ``Astrohub`` web servers.
+In the main ``README.md`` file, read how to make ``MESA`` and ``NuGrid`` codes running on ``Astrohub`` web servers.
 
-For simulations of  XRBs on an accreting neutron star and ensuing rp-process nucleosynthesis, use the ``MESA`` revision 7624 **only** and your copy of the directory ``/xrb_rp_process/xrb_mesa_canpan`` from the ``canpan_projects`` github repository as the corresponding mesa work directories.
+For simulations of  XRBs on an accreting neutron star and ensuing rp-process nucleosynthesis, use the ``MESA`` revision 7624 **only** and your copy of the directory ``/xrb_rp_process/xrb_mesa_canpan`` from the ``canpan_projects`` github repository as the corresponding mesa work directories. In this directory, execute the following commands:
 
-The file ``inlist_ns_h`` uses the cut-off rp-process reaction network ``rp_153.net`` that is sufficient to relatively well simulate both rp-process nucleosynthesis and energetics in ``MESA``. Using the larger network ``rp.net`` leads to much longer execution times for ``MESA`` XRB simulation runs. 
+* ``export MESA_DIR=/user/mesa/mesa_7624``
+* ``export OMP_NUM_THREADS=4``
+* ``./clean``
+* ``./mk``
+
+and make the sub-directories ``LOGS``, ``photos``, and ``ns_star_hdf``.
+
+The file ``inlist_ns_h`` uses the cut-off rp-process reaction network ``rp_153.net`` that is sufficient to relatively well simulate both XRB rp-process nucleosynthesis and energetics in ``MESA``. Using the larger network ``rp.net`` leads to much longer execution times for ``MESA`` XRB simulation runs. 
 
 Avoid running ``MESA`` XRB simulations with the command ``./rn`` that computes a large number of subsequent XRBs and therefore takes about 24 hours to complete. Instead, copy the model structure file ``x100`` from the directory ``photos_start_file`` to ``photos`` and run the ``MESA`` simulation for one XRB with the command ``./re x100``. Its results, as well as results of a longer run with a number of XRBs, can be analyzed with the notebook ``mesa_xray_burst.ipynb`` that lives in the directory
 ``xrb_rp_process/xrb_notebooks``. 
@@ -15,4 +22,4 @@ To use this code on the ``NuGrid WENDI`` (``wendi2``) hub server, first change, 
 * ``make distclean``, and
 * ``make``
 
-They should not report any errors. The one-zone simulation starts with the command ``./ppn.exe``.
+They should not report any errors. The one-zone simulation starts with the command ``./ppn.exe``, and its results can be viewed with a simple ``ppn_demo`` notebook from the sub-directory ``notebooks`` (**note** that the last cell in this notebook assumes that the ``ppn`` run had ouput reaction flux files, for which the option ``iplot_flux_option = 1`` should be used in the file ``ppn_frame.input``). A more detailed analysis of results of one-zone XRB rp-process nucleosynthesis computations can be done in the **TINA hub**.
