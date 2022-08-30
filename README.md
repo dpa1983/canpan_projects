@@ -8,12 +8,12 @@ Here are **basic instructions** on how to get started using ``canpan_projects`` 
 
 1. Preferably, use the [Google Chrome](https://www.google.com/intl/en_ca/chrome/) internet browser.
 2. If you have not done this before, go to the site [github.com](http://github.com) and register there for free, e.g. as a student or a teacher.
-3. Send your github IDs to the CaNPAN computational coordinator to get an access to ``Astrohub`` web servers.
-4. Go to [Astrohub Gateway](https://astrohub.uvic.ca) that offers an access to  **NuGrid WENDI hub** (click on the *red hub* there). It can be used **only by NuGrid members** (all others can access **TINA hub** that makes it possible to use ``canpan_projects`` tools for beginners). Spawn (by clicking on the *orange bar*) the Jupyter Lab Application: *MESAHub v1.2.6*. Then, in the Jupyter Lab Launcher window click *Terminal*.
+3. Send your github ID to the CaNPAN computational coordinator to get an access to ``Astrohub`` web servers.
+4. Go to [Astrohub Gateway](https://astrohub.uvic.ca) that offers an access to **NuGrid WENDI hub** (click on the *red hub* there). It can be used **only by NuGrid members** (all others with registered github IDs can access **TINA hub** that makes it possible to use one-zone ``canpan_projects`` tools for beginners). To access the **NuGrid WENDI hub** you will have to provide your github ID and password. After that, select and spawn (by clicking on the *orange bar*) the Jupyter Lab Application: *MESAHub v1.2.6*. Then, in the Jupyter Lab Launcher window click *Terminal*.
 5. In an opened linux terminal window, go to the directory ``/user/scratch14_outreach``, make there a directory with your name and go to it.
 6. Inside the new directory ``your_name`` execute the following command: ``git clone https://github.com/dpa1983/canpan_projects.git``. It will clone the github repository ``canpan_projects`` in your directory.
 
-## Running MESA and NuGrid codes on astrohub 
+## Running MESA and NuGrid codes on Astrohub 
 
 ### Running MESA and NuGrid codes on NuGrid WENDI (wendi2) hub server
 
@@ -25,7 +25,7 @@ To run stellar evolution simulations with the ``MESA`` code revision 5329 on ``a
 **Note** that these commands must be executed in **every** ``MESA`` work directory where you are going to run stellar evolution simulations.
 
 After that, try to first execute the command ``./clean`` and then ``./mk`` to see that everything is set up correctly, otherwise there will be some error messages. **Make sure** that the mesa work directory has the sub-directories ``LOGS``, ``photos``, ``co_nova_hdf`` (in ``co-nova``) or ``ne_nova_hdf`` (in ``ne_nova``), and ``co_nova_plots`` (in ``co-nova``) or ``ne_nova_plots`` (in ``ne_nova``), and if it does not, make them. For ``MESA`` custom stellar evolution simulations, run the code with the command ``nice -n 19 ./rn``. For ``MESA`` **nova simulations**, use the special script with desired nova model parameters, e.g. for an ONe nova case try to use 
-``./run_mesa 1.3 30 X 2010``, where 1.3 is the ONe WD mass, 30 is its central temperature in MK, X is the symbol coding the mass accretion rate $$2\times 10^{-10}\ M_\odot\mathrm{yr}^{-1}$$, and 2010 is the number of models to compute (for more details on MESA nova simulations, see ``README_nova.md`` file in the ``nova`` directory). 
+``./run_mesa 1.3 30 X 2010``, where 1.3 is the ONe WD mass, 30 is its central temperature in MK, X is the symbol coding the mass accretion rate $$2\times 10^{-10}\ M_\odot\,\mathrm{yr}^{-1},$$ and 2010 is the number of models to compute (for more detailed information on MESA nova simulations, see ``README_nova.md`` file in the ``nova`` directory). The script will ask you 4 questions. In this test run, answer them *no, yes, no, yes*.
 
 To simulate nova nucleosynthesis with a larger nuclear reaction network than in ``MESA``, run the NuGrid multi-zone post-processing nucleosynthesis code ``mppnp`` from your copy of the directory ``run_nova_canpan``. To do this on the ``wendi2`` hub server first change, unless it has already been done, the default path ``PCD=../CODE`` to ``PCD=/user/scratch14_wendi3/dpa/nuppn_nova/frames/mppnp/CODE`` in the file ``Makefile`` in the directory ``run_nova_canpan``. Then execute the commands
 
