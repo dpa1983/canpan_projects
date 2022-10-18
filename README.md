@@ -12,6 +12,7 @@ Here are **basic instructions** on how to get started using ``canpan_projects`` 
 4. Go to [Astrohub Gateway](https://astrohub.uvic.ca) that offers an access to **NuGrid WENDI hub** (click on the *red hub* there). It can be used **only by NuGrid members** (all others with registered github IDs can access **TINA hub** that makes it possible to use one-zone ``canpan_projects`` tools for beginners). To access the **NuGrid WENDI hub** you will have to provide your github ID and password. After that, select and spawn (by clicking on the *orange bar*) the Jupyter Lab Application: *MESAHub v1.2.6*. Then, in the Jupyter Lab Launcher window click *Terminal*.
 5. In an opened linux terminal window, go to the directory ``/user/scratch14_outreach``, make there a directory with your name and go to it.
 6. Inside the new directory ``your_name`` execute the following command: ``git clone https://github.com/dpa1983/canpan_projects.git``. It will clone the github repository ``canpan_projects`` in your directory.
+7. For the introduction to `git` commands and python programming see the first sections in [this github repository](https://github.com/UVic-CompPhys/PHYS248).
 
 ## Running MESA and NuGrid codes on Astrohub 
 
